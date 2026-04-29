@@ -31,7 +31,7 @@ const events: TimelineEvent[] = [
     title: "Ngày hội Việt phục “Tóc Xanh Vạt Áo” - Mùa 1",
     time: "10/01/2021",
     location: "Trường Đại học Khoa học Xã hội và Nhân văn - ĐHQG-HCM",
-    scale: "khoảng 3.000 người tham gia",
+    scale: "Khoảng 3.000 người tham gia",
     image: m1Img,
   },
   {
@@ -40,7 +40,7 @@ const events: TimelineEvent[] = [
     title: "Ngày hội Việt phục “Tóc Xanh Vạt Áo” - Mùa 2",
     time: "13/3/2022",
     location: "Trường Đại học Khoa học Xã hội và Nhân văn - ĐHQG-HCM",
-    scale: "hàng nghìn lượt tham dự",
+    scale: "Hàng nghìn lượt tham dự",
     image: m2Img,
   },
   {
@@ -49,6 +49,7 @@ const events: TimelineEvent[] = [
     title: "Ngày hội Việt phục “Tóc Xanh Vạt Áo” - Mùa 3",
     time: "23/04/2023",
     location: "Trường Đại học Khoa học Xã hội và Nhân văn - ĐHQG-HCM",
+    scale: "Sự kiện văn hóa thường niên lớn nhất",
     composition: "15 đơn vị văn hoá và 18 gian hàng trải nghiệm",
     image: m3Img,
   },
@@ -58,8 +59,8 @@ const events: TimelineEvent[] = [
     title: "Ngày hội Việt phục “Tóc Xanh Vạt Áo” - Mùa 4",
     time: "24/03/2024",
     location: "Trường Đại học Khoa học Xã hội và Nhân văn - ĐHQG-HCM",
-    scale: "theo truyền thông sự kiện, có khoảng 6.000 người tham dự",
-    composition: "hơn 30 gian hàng, khoảng 25 đơn vị văn hoá",
+    scale: "Khoảng 6.000 người tham dự (theo truyền thông)",
+    composition: "Hơn 30 gian hàng, khoảng 25 đơn vị văn hoá",
     image: m4Img,
   },
   {
@@ -68,7 +69,7 @@ const events: TimelineEvent[] = [
     title: "Triển lãm & Trải nghiệm cổ phục “Việt phục Odyssey”",
     time: "04/05/2024",
     location: "Nhà Văn hóa Sinh viên TP.HCM",
-    scale: "hàng nghìn sinh viên tham gia",
+    scale: "Hàng nghìn sinh viên tham gia",
     image: odysseyImg,
   },
   {
@@ -76,8 +77,8 @@ const events: TimelineEvent[] = [
     year: "2025",
     title: "Ngày hội Việt phục “Tóc Xanh Vạt Áo” - Mùa 5",
     time: "22-23/03/2025",
-    location: "đường Phạm Ngọc Thạch và Đại học Khoa học Xã hội và Nhân văn TP.HCM",
-    scale: "Hơn 1.000 người tham gia đồng diễn; Hơn 30 đơn vị văn hoá; Có sự góp mặt của các nghệ sĩ như Phương Thanh, Denis Đặng, Hoàng Duyên.",
+    location: "Đường Phạm Ngọc Thạch và ĐH Khoa học Xã hội & Nhân văn TP.HCM",
+    scale: "• Hơn 1.000 người tham gia đồng diễn\n• Hơn 30 đơn vị văn hoá\n• Góp mặt nghệ sĩ: Phương Thanh, Denis Đặng, Hoàng Duyên",
     image: m5Img,
   },
   {
@@ -85,8 +86,8 @@ const events: TimelineEvent[] = [
     year: "2025",
     title: "Diễu hành Việt phục “Bách Hoa Bộ Hành”",
     time: "08/03/2025",
-    location: "tuyến đường trung tâm Quận 1",
-    scale: "Khoảng 1.000 người diễu hành, 30 đơn vị cổ phục",
+    location: "Tuyến đường trung tâm Quận 1",
+    scale: "Khoảng 1.000 người diễu hành\n30 đơn vị cổ phục",
     image: bhbhImg,
   },
   {
@@ -94,7 +95,7 @@ const events: TimelineEvent[] = [
     year: "2026",
     title: "Ngày hội Việt phục “Tóc Xanh Vạt Áo” - Mùa 6 (lần VII)",
     time: "21-22/03/2026",
-    location: "tuyến diễu hành từ Hồ Con Rùa đến Công viên Phan Đình Phùng",
+    location: "Từ Hồ Con Rùa đến Công viên Phan Đình Phùng",
     scale: "Hơn 1.000 người tham gia",
     image: m6Img,
   },
@@ -150,14 +151,12 @@ export function Timeline() {
       <style dangerouslySetInnerHTML={{ __html: `
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        /* Font refinements for Vietnamese */
         .premium-serif { font-family: "Playfair Display", "Times New Roman", serif; }
         .premium-sans { font-family: "Inter", "Segoe UI", Roboto, sans-serif; }
       `}} />
 
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 opacity-40" 
+        <div className="absolute inset-0 opacity-30" 
              style={{ background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,1) 0%, transparent 80%)' }} />
       </div>
 
@@ -171,7 +170,7 @@ export function Timeline() {
           <span className="text-[var(--bronze)] premium-sans tracking-[0.4em] uppercase text-xs mb-4 block opacity-60">The Journey</span>
           <h2
             className="text-[var(--deep-brown)] premium-serif"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 600, letterSpacing: "-0.02em" }}
+            style={{ fontSize: "clamp(2.5rem, 6vw, 4.2rem)", fontWeight: 600, letterSpacing: "-0.03em" }}
           >
             Hành trình lan tỏa Việt phục
           </h2>
@@ -180,11 +179,10 @@ export function Timeline() {
         {/* ── Scrubber Navigation ─────────────────────────────────── */}
         <div className="relative mb-32 group max-w-full">
           <div className="absolute left-0 right-0 top-6 h-[1px] bg-[var(--bronze)]/10" />
-          
           <motion.div 
-            className="absolute left-0 top-6 h-[2px] bg-gradient-to-r from-[var(--bronze)]/20 via-[var(--bronze)] to-[var(--bronze)]/20 z-10 origin-left"
+            className="absolute left-0 top-6 h-[2px] bg-gradient-to-r from-[var(--bronze)]/0 via-[var(--bronze)] to-[var(--bronze)]/0 z-10 origin-left"
             animate={{ width: `${(activeIndex / (events.length - 1)) * 100}%` }}
-            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+            transition={{ type: "spring", stiffness: 80, damping: 20 }}
           />
 
           <div 
@@ -198,7 +196,7 @@ export function Timeline() {
                 className="timeline-point relative flex-shrink-0 flex flex-col items-center group snap-center"
                 style={{ width: "160px" }}
               >
-                <div className="relative mb-10 z-20">
+                <div className="relative mb-12 z-20">
                   <motion.div 
                     animate={{ 
                       scale: activeIndex === idx ? 1.6 : 1,
@@ -206,21 +204,21 @@ export function Timeline() {
                       borderColor: activeIndex === idx ? "var(--bronze)" : "var(--bronze)",
                       borderWidth: activeIndex === idx ? "0px" : "1.5px"
                     }}
-                    className="w-3.5 h-3.5 rounded-full shadow-sm transition-all duration-300" 
+                    className="w-4 h-4 rounded-full shadow-md transition-all duration-300" 
                   />
                   {activeIndex === idx && (
                     <motion.div 
                       layoutId="active-ring"
-                      className="absolute -inset-3 rounded-full border border-[var(--bronze)]/30"
+                      className="absolute -inset-4 rounded-full border-2 border-[var(--bronze)]/20"
                     />
                   )}
                 </div>
 
-                <div className={`text-center transition-all duration-700 ${activeIndex === idx ? "opacity-100" : "opacity-30"}`}>
-                  <div className="text-[var(--bronze)] premium-serif font-bold text-3xl tracking-tighter mb-3 leading-none">
+                <div className={`text-center transition-all duration-700 ${activeIndex === idx ? "opacity-100 translate-y-0" : "opacity-30 translate-y-2"}`}>
+                  <div className="text-[var(--bronze)] premium-serif font-bold text-4xl tracking-tighter mb-4 leading-none">
                     {event.year}
                   </div>
-                  <div className="text-[var(--deep-brown)] premium-sans text-[9px] uppercase tracking-[0.2em] font-semibold max-w-[140px] mx-auto leading-relaxed">
+                  <div className="text-[var(--deep-brown)] premium-sans text-[10px] uppercase tracking-[0.25em] font-bold max-w-[140px] mx-auto leading-relaxed">
                     {event.title.split("“")[1]?.split("”")[0] || event.title}
                   </div>
                 </div>
@@ -229,8 +227,8 @@ export function Timeline() {
           </div>
         </div>
 
-        {/* ── Stabilized Immersive Card ───────────────────────────── */}
-        <div className="relative px-4 lg:px-12 max-w-6xl mx-auto min-h-[720px] lg:h-[720px]">
+        {/* ── Luxury Card Implementation ─────────────────────────── */}
+        <div className="relative px-4 lg:px-12 max-w-6xl mx-auto h-[750px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
@@ -238,84 +236,83 @@ export function Timeline() {
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.15}
               onDragEnd={onDragEnd}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="bg-white rounded-[3rem] overflow-hidden shadow-[0_60px_120px_-40px_rgba(46,26,23,0.15)] border border-[var(--bronze)]/5 cursor-grab active:cursor-grabbing w-full h-full"
+              initial={{ opacity: 0, x: 40, filter: "blur(10px)" }}
+              animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, x: -40, filter: "blur(10px)" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-white rounded-[4rem] overflow-hidden shadow-[0_100px_200px_-50px_rgba(46,26,23,0.12)] border border-[var(--bronze)]/10 cursor-grab active:cursor-grabbing w-full h-full"
             >
               <div className="grid lg:grid-cols-2 gap-0 h-full">
-                <div className="relative h-[350px] lg:h-full overflow-hidden bg-[var(--deep-brown)]">
+                {/* Image Panel */}
+                <div className="relative h-[300px] lg:h-full overflow-hidden bg-[var(--deep-brown)]">
                   <ImageWithFallback
                     src={activeEvent.image}
                     alt={activeEvent.title}
-                    className="w-full h-full object-cover opacity-95 transition-transform duration-1000"
+                    className="w-full h-full object-cover opacity-95 hover:scale-105 transition-transform duration-[2000ms]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent lg:hidden" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden" />
                 </div>
 
-                <div className="p-10 lg:p-16 flex flex-col justify-center h-full relative bg-[var(--ivory)]/10 backdrop-blur-xl">
-                  {/* Watermark Year */}
-                  <div className="absolute top-0 right-0 text-[18rem] premium-serif font-bold text-[var(--bronze)]/[0.04] select-none pointer-events-none translate-x-1/3 -translate-y-1/3 leading-none">
+                {/* Content Panel */}
+                <div className="p-12 lg:p-20 flex flex-col justify-between h-full relative bg-gradient-to-br from-white to-[var(--ivory)]/5">
+                  {/* Background Watermark */}
+                  <div className="absolute top-0 right-0 text-[20rem] premium-serif font-bold text-[var(--bronze)]/[0.03] select-none pointer-events-none translate-x-1/4 -translate-y-1/4 leading-none">
                     {activeEvent.year}
                   </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="relative z-10"
-                  >
-                    <div className="mb-10 min-h-[120px] flex items-center border-l-4 border-[var(--bronze)] pl-8">
-                      <h3 className="text-[var(--deep-brown)] premium-serif text-3xl lg:text-4xl font-semibold leading-tight tracking-tight">
+                  <div className="relative z-10 h-full flex flex-col">
+                    {/* Header: Title */}
+                    <div className="mb-12 border-l-4 border-[var(--bronze)] pl-10">
+                      <h3 className="text-[var(--deep-brown)] premium-serif text-3xl lg:text-4xl font-semibold leading-[1.2] tracking-tight">
                         {activeEvent.title}
                       </h3>
                     </div>
 
-                    <div className="space-y-6 lg:space-y-8">
-                      {/* Row: Time */}
-                      <div className="flex items-start gap-6">
-                        <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                          <Calendar size={18} />
+                    {/* Info Grid - Spaced out for Luxury feel */}
+                    <div className="flex-1 flex flex-col justify-around py-4">
+                      {/* Item: Time */}
+                      <div className="flex items-center gap-10">
+                        <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-md border border-[var(--bronze)]/10 flex-shrink-0">
+                          <Calendar size={24} strokeWidth={1.5} />
                         </div>
                         <div className="flex-1">
-                          <span className="block text-[9px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-1 opacity-50">Thời gian</span>
-                          <span className="text-[var(--deep-brown)] premium-sans text-lg lg:text-xl font-medium tracking-tight">{activeEvent.time}</span>
+                          <span className="block text-[10px] uppercase tracking-[0.3em] text-[var(--bronze)] font-bold mb-2 opacity-60">Thời gian</span>
+                          <span className="text-[var(--deep-brown)] premium-sans text-xl lg:text-2xl font-medium tracking-tight">{activeEvent.time}</span>
                         </div>
                       </div>
 
-                      {/* Row: Location */}
-                      <div className="flex items-start gap-6">
-                        <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                          <MapPin size={18} />
+                      {/* Item: Location */}
+                      <div className="flex items-center gap-10">
+                        <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-md border border-[var(--bronze)]/10 flex-shrink-0">
+                          <MapPin size={24} strokeWidth={1.5} />
                         </div>
                         <div className="flex-1">
-                          <span className="block text-[9px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-1 opacity-50">Địa điểm</span>
+                          <span className="block text-[10px] uppercase tracking-[0.3em] text-[var(--bronze)] font-bold mb-2 opacity-60">Địa điểm</span>
                           <span className="text-[var(--deep-brown)] premium-sans text-lg lg:text-xl font-medium leading-relaxed tracking-tight">{activeEvent.location}</span>
                         </div>
                       </div>
 
-                      {/* Row: Scale */}
-                      <div className="flex items-start gap-6">
-                        <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                          <Users size={18} />
+                      {/* Item: Scale (Formatted as list if contains bullets) */}
+                      <div className="flex items-start gap-10">
+                        <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-md border border-[var(--bronze)]/10 flex-shrink-0">
+                          <Users size={24} strokeWidth={1.5} />
                         </div>
                         <div className="flex-1">
-                          <span className="block text-[9px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-1 opacity-50">Quy mô</span>
-                          <span className="text-[var(--deep-brown)] premium-sans text-base lg:text-lg font-normal tracking-tight leading-snug">
+                          <span className="block text-[10px] uppercase tracking-[0.3em] text-[var(--bronze)] font-bold mb-2 opacity-60">Quy mô</span>
+                          <div className="text-[var(--deep-brown)] premium-sans text-base lg:text-lg font-normal tracking-tight leading-relaxed whitespace-pre-line opacity-90">
                             {activeEvent.scale || "Đang cập nhật..."}
-                          </span>
+                          </div>
                         </div>
                       </div>
 
-                      {/* Row: Info */}
+                      {/* Item: Composition (Optional) */}
                       {activeEvent.composition && (
-                        <div className="flex items-start gap-6">
-                          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                            <Info size={18} />
+                        <div className="flex items-start gap-10">
+                          <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-md border border-[var(--bronze)]/10 flex-shrink-0">
+                            <Info size={24} strokeWidth={1.5} />
                           </div>
                           <div className="flex-1">
-                            <span className="block text-[9px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-1 opacity-50">Thành phần / Ghi chú</span>
+                            <span className="block text-[10px] uppercase tracking-[0.3em] text-[var(--bronze)] font-bold mb-2 opacity-60">Thành phần</span>
                             <p className="text-[var(--deep-brown)] premium-sans text-sm lg:text-base leading-relaxed opacity-80">
                               {activeEvent.composition}
                             </p>
@@ -323,27 +320,27 @@ export function Timeline() {
                         </div>
                       )}
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation Buttons */}
+          {/* Editorial Nav Controls */}
           <div className="hidden xl:block">
             <button 
               onClick={handlePrev}
-              className="absolute left-[-80px] top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-white border border-[var(--bronze)]/5 text-[var(--bronze)] shadow-xl hover:bg-[var(--bronze)] hover:text-white transition-all disabled:opacity-0 group"
+              className="absolute left-[-100px] top-1/2 -translate-y-1/2 z-20 w-16 h-16 rounded-full bg-white border border-[var(--bronze)]/10 text-[var(--bronze)] shadow-2xl hover:bg-[var(--bronze)] hover:text-white transition-all disabled:opacity-0 group backdrop-blur-md"
               disabled={activeIndex === 0}
             >
-              <ChevronLeft size={28} className="mx-auto group-hover:-translate-x-1 transition-transform" />
+              <ChevronLeft size={32} strokeWidth={1.5} className="mx-auto group-hover:-translate-x-1 transition-transform" />
             </button>
             <button 
               onClick={handleNext}
-              className="absolute right-[-80px] top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-white border border-[var(--bronze)]/5 text-[var(--bronze)] shadow-xl hover:bg-[var(--bronze)] hover:text-white transition-all disabled:opacity-0 group"
+              className="absolute right-[-100px] top-1/2 -translate-y-1/2 z-20 w-16 h-16 rounded-full bg-white border border-[var(--bronze)]/10 text-[var(--bronze)] shadow-2xl hover:bg-[var(--bronze)] hover:text-white transition-all disabled:opacity-0 group backdrop-blur-md"
               disabled={activeIndex === events.length - 1}
             >
-              <ChevronRight size={28} className="mx-auto group-hover:translate-x-1 transition-transform" />
+              <ChevronRight size={32} strokeWidth={1.5} className="mx-auto group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
