@@ -73,76 +73,60 @@ export function StickyImageSection() {
       <div className="max-w-[1180px] mx-auto">
         <div className="lg:grid lg:grid-cols-[52%_1fr] lg:gap-16 items-start">
 
-          {/* ── Left: sticky image ──────────────────────────────────────── */}
+          {/* ── Left: clean editorial image panel ───────────────────────── */}
           <div className="hidden lg:block lg:sticky lg:top-24">
-            <div
-              className="relative"
-              style={{
-                height: "auto",
-                maxHeight: "85vh",
-              }}
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeIndex}
-                  className="relative" // Changed from absolute inset-0 to allow auto height
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                >
-                  <ProgressiveImg
-                    src={currentImage.src}
-                    alt={currentImage.alt}
-                    style={{ width: "100%", height: "auto", objectFit: "contain" }}
-                  />
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Caption moved BELOW the image container */}
-            <div className="mt-4 px-2">
-              <AnimatePresence mode="wait">
-                {currentImage.caption && (
+            <div className="relative max-w-[470px] mx-auto">
+              <div className="absolute -inset-5 rounded-[1.75rem] bg-[linear-gradient(135deg,rgba(230,194,122,0.18),rgba(192,133,82,0.07))]" />
+              <div
+                className="relative overflow-hidden rounded-[1.15rem] bg-[#fbf3e7] shadow-[0_24px_70px_rgba(69,37,31,0.13)] ring-1 ring-[var(--bronze)]/10"
+                style={{ height: "clamp(430px, 66vh, 640px)" }}
+              >
+                <AnimatePresence mode="wait">
                   <motion.div
-                    key={`caption-${activeIndex}`}
-                    initial={{ opacity: 0, y: 5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 5 }}
-                    transition={{ duration: 0.45 }}
+                    key={activeIndex}
+                    className="absolute inset-0 flex items-center justify-center p-3"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.55, ease: "easeInOut" }}
                   >
-                    <p
-                      className="text-[var(--deep-brown)] italic opacity-70"
-                      style={{ fontFamily: "var(--font-sans)", fontSize: "0.85rem", lineHeight: 1.5 }}
-                    >
-                      {currentImage.caption}
-                    </p>
+                    <ProgressiveImg
+                      src={currentImage.src}
+                      alt={currentImage.alt}
+                      wrapperClass="w-full h-full flex items-center justify-center"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                        objectPosition: "center",
+                      }}
+                    />
                   </motion.div>
-                )}
-              </AnimatePresence>
+                </AnimatePresence>
+              </div>
             </div>
           </div>
 
-          {/* ── Right: scrollable text ───────────────────────────────────── */}
-          <div className="space-y-24 pt-4 pb-16">
+          {/* ── Right: article text ──────────────────────────────────────── */}
+          <div className="space-y-16 pt-2 pb-16 lg:pt-8">
             {TEXT_BLOCKS.map((block, i) => (
-              <div
+              <section
                 key={i}
                 ref={(el) => { blockRefs.current[i] = el; }}
+                className="relative border-l border-[var(--bronze)]/20 pl-7"
               >
                 <motion.div
-                  initial={{ opacity: 0, x: 24 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.7 }}
+                  transition={{ duration: 0.65 }}
                 >
-                  {/* Paragraphs */}
                   <div className="space-y-5">
                     {block.body.map((para, j) => (
                       <p
                         key={j}
-                        className="text-[var(--deep-brown)]"
-                        style={{ fontFamily: "var(--font-sans)", fontSize: "1.1rem", lineHeight: 1.85 }}
+                        className="text-[var(--deep-brown)]/90"
+                        style={{ fontFamily: "var(--font-sans)", fontSize: "1.06rem", lineHeight: 1.9 }}
                       >
                         {para}
                       </p>
@@ -151,31 +135,18 @@ export function StickyImageSection() {
 
                   {/* Mobile-only image */}
                   <div
-                    className="lg:hidden mt-8 relative overflow-hidden"
-                    style={{ height: "55vw", minHeight: "240px", background: "#2e1a17", borderRadius: "3px" }}
+                    className="lg:hidden mt-8 relative overflow-hidden rounded-[1rem] bg-[#fbf3e7] shadow-[0_18px_45px_rgba(69,37,31,0.10)]"
+                    style={{ height: "55vw", minHeight: "260px" }}
                   >
                     <ProgressiveImg
                       src={IMAGES[block.imageIndex].src}
                       alt={IMAGES[block.imageIndex].alt}
-                      wrapperClass="w-full h-full"
-                      style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                      wrapperClass="w-full h-full flex items-center justify-center"
+                      style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center" }}
                     />
-                    {IMAGES[block.imageIndex].caption && (
-                      <div
-                        className="absolute bottom-0 left-0 right-0 px-4 py-3"
-                        style={{ background: "rgba(46,26,23,0.72)" }}
-                      >
-                        <p
-                          className="text-[var(--ivory)]/80 italic"
-                          style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem" }}
-                        >
-                          {IMAGES[block.imageIndex].caption}
-                        </p>
-                      </div>
-                    )}
                   </div>
                 </motion.div>
-              </div>
+              </section>
             ))}
           </div>
 
