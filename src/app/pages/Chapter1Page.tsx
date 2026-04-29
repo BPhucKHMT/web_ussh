@@ -30,7 +30,7 @@ export function Chapter1Page() {
         <div className="max-w-4xl mx-auto">
           <div className="prose prose-lg text-[var(--deep-brown)] mx-auto" style={{ fontFamily: "var(--font-sans)", fontSize: "1.125rem", lineHeight: 1.8 }}>
             <DropCap>
-              Để tạo nên sự thành công và vẻ đẹp đồng điệu cho sự kiện, họ đã cùng nhau luyện tập miệt mài nhiều ngày, dùng nhiệt huyết để tái hiện những câu chuyện lịch sử.
+              Chiều tối 21/3, hơn một ngàn bạn trẻ trong những bộ Việt phục rực rỡ đã cùng xuống phố đồng diễn cho đêm hội Tóc Xanh Vạt Áo. Để tạo nên sự thành công và vẻ đẹp đồng điệu cho sự kiện, họ đã cùng nhau luyện tập miệt mài nhiều ngày, dùng nhiệt huyết để tái hiện những câu chuyện lịch sử.
             </DropCap>
             <p>
               Chúng tôi bắt gặp Lê Lâm Khánh My (21 tuổi, Tp.HCM) thướt tha trong kiểu áo ngũ thân tay chẽn màu xanh nhạt. Khi được hỏi về trang phục, Khánh My hào hứng "khoe": "Kiểu áo này tuy đơn giản, không đính kết cầu kỳ nhưng chính nét suông rộng, khoáng đạt ấy lại toát lên vẻ tinh tế và phong thái tự tại của người Việt xưa. Càng mặc, mình càng thấy yêu sự giản dị này".

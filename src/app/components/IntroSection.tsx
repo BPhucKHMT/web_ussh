@@ -63,17 +63,16 @@ export function IntroSection() {
           className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-24 overflow-hidden"
         >
           <div
-            className="relative w-full"
+            className="relative w-full flex items-center justify-center"
             style={{
-              height: "auto",
-              maxHeight: "95vh",
+              height: "clamp(420px, 72vh, 760px)",
               background: "var(--ivory)"
             }}
           >
             <ImageWithFallback
               src={hs2}
               alt="Phan Hồng Sơn trong trang phục trực lĩnh đại khâm"
-              style={{ width: "100%", height: "auto", objectFit: "contain" }}
+              style={{ width: "100%", height: "100%", objectFit: "contain" }}
             />
           </div>
         </motion.figure>

@@ -5,10 +5,10 @@ import { ChevronLeft, ChevronRight, Calendar, MapPin, Users, Info } from "lucide
 
 // Import images from Timeline folder
 import m1Img from "../../imports/Timeline/dong-dao-ban-tre-tham-du_SCPD (1).jpg";
-import m2Img from "../../imports/Timeline/484882766_1050097800476520_8745316182747481272_n.jpg";
+import m2Img from "../../imports/Timeline/mua2.jpg";
 import m3Img from "../../imports/Timeline/z7771927096680_82f51c2b29a3fc0cb74d266dd44cdba3.jpg";
 import m4Img from "../../imports/Timeline/img-8074-6235.avif";
-import odysseyImg from "../../imports/Timeline/z5279234434543-f51c849802177e7b1d33cbc37d82010c-1-9157.avif";
+import odysseyImg from "../../imports/Timeline/odyssey.jpg";
 import m5Img from "../../imports/Timeline/bazaarvietnam-miss-cosmo-2024-va-a-hau-miss-cosmo-2024-thich-thu-mac-viet-phuc-thum.jpg";
 import bhbhImg from "../../imports/Timeline/233A5413-1741404929.webp";
 import m6Img from "../../imports/Timeline/tocxanhvatao2026khoanguyen18-1774089616213.webp";
