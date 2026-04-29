@@ -54,7 +54,7 @@ export function IntroSection() {
           </p>
         </motion.div>
 
-        {/* ── Cinematic Full-Width Image ─────────────────────────────────── */}
+        {/* ── Cinematic Full-Width Image (Updated to object-contain) ──────────────── */}
         <motion.figure
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -63,24 +63,17 @@ export function IntroSection() {
           className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-24 overflow-hidden"
         >
           <div
-            className="relative w-full overflow-hidden"
+            className="relative w-full"
             style={{
-              height: "85vh",
-              background: "#1a1a1a"
+              height: "auto",
+              maxHeight: "95vh",
+              background: "var(--ivory)"
             }}
           >
             <ImageWithFallback
               src={hs2}
               alt="Phan Hồng Sơn trong trang phục trực lĩnh đại khâm"
-              className="w-full h-full object-cover object-[center_30%]"
-            />
-            {/* Vignette & Gradients */}
-            <div
-              className="absolute inset-0"
-              style={{
-                background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.4) 100%)",
-                pointerEvents: "none"
-              }}
+              style={{ width: "100%", height: "auto", objectFit: "contain" }}
             />
           </div>
         </motion.figure>

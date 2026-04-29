@@ -22,7 +22,7 @@ export function Chapter1Page() {
         id="chuong-1"
         number="Chương 1"
         title={'Không phải \u201cCosplay\u201d, đây là văn hoá'}
-        description="Chiều tối 21/3, hơn một ngàn bạn trẻ trong những bộ Việt phục rực rỡ đã cùng xuống phố đồng diễn cho đêm hội Tóc Xanh Vạt Áo."
+        description=""
         image={biaChuong1}
       />
 
@@ -30,11 +30,8 @@ export function Chapter1Page() {
         <div className="max-w-4xl mx-auto">
           <div className="prose prose-lg text-[var(--deep-brown)] mx-auto" style={{ fontFamily: "var(--font-sans)", fontSize: "1.125rem", lineHeight: 1.8 }}>
             <DropCap>
-              Chiều tối 21/3, hơn một ngàn bạn trẻ trong những bộ Việt phục rực rỡ đã cùng xuống phố đồng diễn cho đêm hội Tóc Xanh Vạt Áo.
-            </DropCap>
-            <p>
               Để tạo nên sự thành công và vẻ đẹp đồng điệu cho sự kiện, họ đã cùng nhau luyện tập miệt mài nhiều ngày, dùng nhiệt huyết để tái hiện những câu chuyện lịch sử.
-            </p>
+            </DropCap>
             <p>
               Chúng tôi bắt gặp Lê Lâm Khánh My (21 tuổi, Tp.HCM) thướt tha trong kiểu áo ngũ thân tay chẽn màu xanh nhạt. Khi được hỏi về trang phục, Khánh My hào hứng "khoe": "Kiểu áo này tuy đơn giản, không đính kết cầu kỳ nhưng chính nét suông rộng, khoáng đạt ấy lại toát lên vẻ tinh tế và phong thái tự tại của người Việt xưa. Càng mặc, mình càng thấy yêu sự giản dị này".
             </p>
@@ -52,8 +49,7 @@ export function Chapter1Page() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="w-full h-full flex items-center justify-center rounded-xl overflow-hidden"
-              style={{ boxShadow: "0 20px 50px rgba(75,46,43,0.2)" }}
+              className="w-full h-full flex items-center justify-center"
             >
               <ProgressiveImg
                 src={img2272}
@@ -78,7 +74,7 @@ export function Chapter1Page() {
               style={{ fontFamily: "var(--font-sans)", fontSize: "1.125rem", lineHeight: 1.8 }}
             >
               <p>
-                Nhìn cách Khánh My trân trọng tà áo trên người, chúng tôi hiểu cô cũng như bao người trẻ khác đều có tình yêu mãnh liệt đối với Việt phục. Là một sinh viên năm 3 ngành Báo chí - Truyền thông, Khánh My thường tham gia quay, chụp cho Tóc Xanh Vạt Áo các mùa trước. Những khi cầm máy ảnh tác nghiệp, cô sinh viên trẻ cảm nhận được sâu sắc bầu không khí sôi động của đêm hội.
+                Nhìn cách Khánh My trân trọng tà áo trên người, chúng tôi hiểu cô cũng như bao người trẻ khác đều có tình yêu mãnh liệt đối với Việt phục. Là một sinh viên năm 3 ngành Báo chí, Khánh My thường tham gia quay, chụp cho Tóc Xanh Vạt Áo các mùa trước. Những khi cầm máy ảnh tác nghiệp, cô sinh viên trẻ cảm nhận được sâu sắc bầu không khí sôi động của đêm hội.
               </p>
             </motion.div>
 
@@ -101,8 +97,7 @@ export function Chapter1Page() {
       {/* ── Full-width image ──────────────────────────────────────────── */}
       <div className="w-full max-w-6xl mx-auto px-6 py-12">
         <figure className="w-full flex flex-col items-center">
-          <div className="w-full rounded-xl overflow-hidden"
-               style={{ boxShadow: "0 12px 40px rgba(75,46,43,0.15)" }}>
+          <div className="w-full">
             <ProgressiveImg
               src={eventCrowd}
               alt="Sự thành công của đêm hội"
@@ -136,8 +131,7 @@ export function Chapter1Page() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="w-full h-full flex items-center justify-center rounded-xl overflow-hidden"
-              style={{ boxShadow: "0 20px 50px rgba(75,46,43,0.2)" }}
+              className="w-full h-full flex items-center justify-center"
             >
               <ProgressiveImg
                 src={eventColor}
@@ -161,10 +155,7 @@ export function Chapter1Page() {
               style={{ fontFamily: "var(--font-sans)", fontSize: "1.125rem", lineHeight: 1.8 }}
             >
               <p>
-                Chương trình đồng diễn Việt phục bắt đầu, hàng trăm ngọn cờ tung bay dưới khán đài sân khấu, đung đưa theo nhịp bài hát "Nhà tôi có một lá cờ". Khi được nhận xét là cô gái hát vang và nhiệt tình nhất, Trần Lâm Tú Anh (22 tuổi, Bình Dương) cười duyên với chúng tôi. Cô không giấu được sự tự hào và phấn khởi khi trở thành một phần của ngày hội Việt Phục lớn nhất trong năm.
-              </p>
-              <p>
-                "Mình cảm nhận được các bạn trẻ cũng giống mình, ai cũng đau đáu tìm về những nét đẹp văn hóa - truyền thống". Đến với chương trình, cô diện tà áo dài truyền thống có chất liệu gấm, màu xanh lá đậm. Điểm thêm nhiều họa tiết nổi thêu bằng chỉ hồng như cánh hạc, hoa và cánh quạt.
+                Chương trình đồng diễn Việt phục bắt đầu, hàng trăm ngọn cờ tung bay dưới khán đài sân khấu, đung đưa theo nhịp bài hát "Nhà tôi có treo một lá cờ". Khi được nhận xét là cô gái hát vang và nhiệt tình nhất, Trần Lâm Tú Anh (22 tuổi, Bình Dương) cười duyên với chúng tôi. Cô không giấu được sự tự hào và phấn khởi khi trở thành một phần của ngày hội Việt Phục lớn nhất trong năm.
               </p>
             </motion.div>
 

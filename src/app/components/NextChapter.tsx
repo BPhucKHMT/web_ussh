@@ -7,7 +7,7 @@ interface NextChapterProps {
 
 export function NextChapter({ to, label }: NextChapterProps) {
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16 flex justify-center">
+    <div className="max-w-3xl mx-auto px-6 pt-32 pb-48 flex justify-center">
       <Link 
         to={to}
         className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--bronze)] text-[var(--bronze)] hover:bg-[var(--bronze)] hover:text-[var(--ivory)] transition-colors uppercase tracking-widest text-sm font-medium"

@@ -33,7 +33,7 @@ export function Chapter3Page() {
           className="text-[var(--deep-brown)] font-serif font-semibold leading-tight"
           style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}
         >
-          “Nhạc trưởng” sau những tà áo
+          “Nhạc trưởng” sau những <span className="whitespace-nowrap">tà áo</span>
         </motion.h1>
       </div>
 

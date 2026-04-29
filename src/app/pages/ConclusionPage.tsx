@@ -1,7 +1,7 @@
 import { ArticleContent, DropCap } from "../components/ArticleContent";
 import { motion } from "motion/react";
 import { ProgressiveImg } from "../components/ProgressiveImg";
-import ketImage from "../../imports/Ket.jpg";
+import ketImage from "../../imports/Ket1.jpg";
 
 export function ConclusionPage() {
   return (

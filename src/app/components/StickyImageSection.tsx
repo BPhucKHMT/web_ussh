@@ -76,18 +76,16 @@ export function StickyImageSection() {
           {/* ── Left: sticky image ──────────────────────────────────────── */}
           <div className="hidden lg:block lg:sticky lg:top-24">
             <div
-              className="relative overflow-hidden"
+              className="relative"
               style={{
-                height: "75vh",
-                maxHeight: "700px",
-                background: "#2e1a17",
-                borderRadius: "3px",
+                height: "auto",
+                maxHeight: "85vh",
               }}
             >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
-                  className="absolute inset-0"
+                  className="relative" // Changed from absolute inset-0 to allow auto height
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -96,39 +94,26 @@ export function StickyImageSection() {
                   <ProgressiveImg
                     src={currentImage.src}
                     alt={currentImage.alt}
-                    wrapperClass="absolute inset-0"
-                    className="w-full h-full object-cover"
-                  />
-                  {/* Vignette */}
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(to bottom, rgba(46,26,23,0.15) 0%, transparent 30%, transparent 65%, rgba(46,26,23,0.72) 100%)",
-                      pointerEvents: "none",
-                    }}
+                    style={{ width: "100%", height: "auto", objectFit: "contain" }}
                   />
                 </motion.div>
               </AnimatePresence>
+            </div>
 
-              {/* Caption overlay */}
+            {/* Caption moved BELOW the image container */}
+            <div className="mt-4 px-2">
               <AnimatePresence mode="wait">
                 {currentImage.caption && (
                   <motion.div
                     key={`caption-${activeIndex}`}
-                    className="absolute bottom-0 left-0 right-0 px-5 py-4"
-                    style={{
-                      background: "rgba(46,26,23,0.72)",
-                      backdropFilter: "blur(4px)",
-                    }}
-                    initial={{ opacity: 0, y: 8 }}
+                    initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
+                    exit={{ opacity: 0, y: 5 }}
                     transition={{ duration: 0.45 }}
                   >
                     <p
-                      className="text-[var(--ivory)]/80 italic"
-                      style={{ fontFamily: "var(--font-sans)", fontSize: "0.8rem", lineHeight: 1.5 }}
+                      className="text-[var(--deep-brown)] italic opacity-70"
+                      style={{ fontFamily: "var(--font-sans)", fontSize: "0.85rem", lineHeight: 1.5 }}
                     >
                       {currentImage.caption}
                     </p>
@@ -173,7 +158,7 @@ export function StickyImageSection() {
                       src={IMAGES[block.imageIndex].src}
                       alt={IMAGES[block.imageIndex].alt}
                       wrapperClass="w-full h-full"
-                      className="w-full h-full object-cover"
+                      style={{ width: "100%", height: "100%", objectFit: "contain" }}
                     />
                     {IMAGES[block.imageIndex].caption && (
                       <div
