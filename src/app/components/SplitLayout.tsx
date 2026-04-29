@@ -16,14 +16,14 @@ export function SplitLayout({ imageSrc, imageAlt, caption, children }: SplitLayo
 
           {/* Cột trái: Hình ảnh */}
           <div className="w-full lg:w-5/12 lg:sticky lg:top-24">
-            <div className="relative mb-4 flex justify-center rounded-lg overflow-hidden"
-                 style={{ boxShadow: "0 8px 30px rgba(75,46,43,0.18)" }}>
+            <div className="group relative mb-4 flex justify-center overflow-hidden rounded-lg transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(75,46,43,0.26)]"
+                 style={{ boxShadow: "0 8px 30px rgba(75,46,43,0.18)", transform: "translateZ(0)" }}>
               <ProgressiveImg
                 key={imageSrc}
                 src={imageSrc}
                 alt={imageAlt}
                 wrapperClass="w-full"
-                className="w-full h-auto object-contain rounded-lg"
+                className="w-full h-auto object-contain rounded-lg transition duration-700 ease-out group-hover:scale-[1.045] group-hover:brightness-[1.04]"
               />
             </div>
             {caption && (

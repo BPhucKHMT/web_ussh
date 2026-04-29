@@ -83,7 +83,8 @@ export function ProgressiveImg({
           ...style,
           display: "block",
           opacity: loaded ? 1 : 0,
-          transition: "opacity 0.45s ease",
+          transition:
+            "opacity 0.45s ease, transform 1200ms cubic-bezier(0.16, 1, 0.3, 1), filter 1200ms cubic-bezier(0.16, 1, 0.3, 1)",
         }}
         onLoad={markLoaded}
         onError={() => setLoaded(true)}

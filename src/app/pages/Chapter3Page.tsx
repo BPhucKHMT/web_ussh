@@ -1,5 +1,6 @@
 import { ArticleContent, DropCap, PullQuote, Subhead } from "../components/ArticleContent";
 import { ImageBlock } from "../components/ImageBlock";
+import { LivingProcessImage } from "../components/LivingProcessImage";
 import { NextChapter } from "../components/NextChapter";
 import { SplitLayout } from "../components/SplitLayout";
 import { motion } from "motion/react";
@@ -92,10 +93,9 @@ export function Chapter3Page() {
         ></motion.div>
       </div>
 
-      <ImageBlock
+      <LivingProcessImage
         src={chuong3_3}
         alt="Quy trình tái tạo Việt phục"
-        layout="full"
       />
 
       <SplitLayout

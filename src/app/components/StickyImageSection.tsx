@@ -78,13 +78,13 @@ export function StickyImageSection() {
             <div className="relative max-w-[470px] mx-auto">
               <div className="absolute -inset-5 rounded-[1.75rem] bg-[linear-gradient(135deg,rgba(230,194,122,0.18),rgba(192,133,82,0.07))]" />
               <div
-                className="relative overflow-hidden rounded-[1.15rem] bg-[#fbf3e7] shadow-[0_24px_70px_rgba(69,37,31,0.13)] ring-1 ring-[var(--bronze)]/10"
+                className="group relative overflow-hidden rounded-[1.15rem] bg-[#fbf3e7] shadow-[0_24px_70px_rgba(69,37,31,0.13)] ring-1 ring-[var(--bronze)]/10 transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(69,37,31,0.2)]"
                 style={{ height: "clamp(430px, 66vh, 640px)" }}
               >
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeIndex}
-                    className="absolute inset-0 flex items-center justify-center p-3"
+                    className="absolute inset-0 flex items-center justify-center p-3 transition duration-700 ease-out group-hover:scale-[1.045] group-hover:brightness-[1.04]"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -135,13 +135,14 @@ export function StickyImageSection() {
 
                   {/* Mobile-only image */}
                   <div
-                    className="lg:hidden mt-8 relative overflow-hidden rounded-[1rem] bg-[#fbf3e7] shadow-[0_18px_45px_rgba(69,37,31,0.10)]"
+                    className="group lg:hidden mt-8 relative overflow-hidden rounded-[1rem] bg-[#fbf3e7] shadow-[0_18px_45px_rgba(69,37,31,0.10)] transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_24px_58px_rgba(69,37,31,0.18)]"
                     style={{ height: "55vw", minHeight: "260px" }}
                   >
                     <ProgressiveImg
                       src={IMAGES[block.imageIndex].src}
                       alt={IMAGES[block.imageIndex].alt}
                       wrapperClass="w-full h-full flex items-center justify-center"
+                      className="transition duration-700 ease-out group-hover:scale-[1.045] group-hover:brightness-[1.04]"
                       style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center" }}
                     />
                   </div>

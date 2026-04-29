@@ -63,7 +63,7 @@ export function IntroSection() {
           className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-24 overflow-hidden"
         >
           <div
-            className="relative w-full flex items-center justify-center"
+            className="group relative w-full flex items-center justify-center overflow-hidden transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(75,46,43,0.2)]"
             style={{
               height: "clamp(420px, 72vh, 760px)",
               background: "var(--ivory)"
@@ -73,6 +73,7 @@ export function IntroSection() {
               src={hs2}
               alt="Phan Hồng Sơn trong trang phục trực lĩnh đại khâm"
               style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              className="transition duration-700 ease-out group-hover:scale-[1.035] group-hover:brightness-[1.04]"
             />
           </div>
         </motion.figure>

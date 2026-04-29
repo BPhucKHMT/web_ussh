@@ -1,7 +1,8 @@
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { forwardRef, useEffect, useRef, useState, type ReactNode } from "react";
+import { motion } from "motion/react";
+import HTMLFlipBook from "react-pageflip";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { ChevronLeft, ChevronRight, Calendar, MapPin, Users, Info } from "lucide-react";
+import { ChevronLeft, ChevronRight, Calendar, MapPin, Users } from "lucide-react";
 
 // Import images from Timeline folder
 import m1Img from "../../imports/Timeline/dong-dao-ban-tre-tham-du_SCPD (1).jpg";
@@ -99,70 +100,153 @@ const events: TimelineEvent[] = [
   },
 ];
 
-const DRAG_THRESHOLD = 50;
+interface TimelinePageProps {
+  event: TimelineEvent;
+}
+
+const TimelineImagePage = forwardRef<HTMLDivElement, TimelinePageProps>(({ event }, ref) => (
+  <article ref={ref} className="timeline-page h-full w-full overflow-hidden bg-[var(--deep-brown)]">
+    <div className="relative h-full w-full">
+      <ImageWithFallback
+        src={event.image}
+        alt={event.title}
+        className="h-full w-full object-cover opacity-95"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/18" />
+      <div className="absolute left-7 top-7 rounded-full bg-[#fff8ec]/95 px-5 py-2.5 text-sm font-bold tracking-[0.18em] text-[var(--bronze)] shadow-lg viet-sans">
+        {event.year}
+      </div>
+    </div>
+  </article>
+));
+
+TimelineImagePage.displayName = "TimelineImagePage";
+
+const TimelineInfoPage = forwardRef<HTMLDivElement, TimelinePageProps>(({ event }, ref) => (
+  <article ref={ref} className="timeline-page h-full w-full overflow-hidden bg-[#fff8ec]">
+    <div className="relative flex h-full flex-col justify-center overflow-hidden px-12 py-10">
+      <div className="pointer-events-none absolute right-[-2.5rem] top-[-2.5rem] select-none text-[12rem] font-bold leading-none text-[var(--bronze)]/[0.055] viet-serif">
+        {event.year}
+      </div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-2 bg-gradient-to-r from-[var(--bronze)]/24 to-transparent" />
+
+      <div className="relative z-10">
+        <div className="mb-8 border-l-4 border-[var(--bronze)] pl-6">
+          <h3 className="line-clamp-3 text-3xl font-semibold leading-tight tracking-tight text-[var(--deep-brown)] viet-serif">
+            {event.title}
+          </h3>
+        </div>
+
+        <div className="space-y-6 text-[var(--deep-brown)]">
+          <TimelineDetail icon={<Calendar size={19} />} label="Thời gian">
+            <span className="text-lg font-bold tracking-tight viet-sans">{event.time}</span>
+          </TimelineDetail>
+
+          <TimelineDetail icon={<MapPin size={19} />} label="Địa điểm">
+            <span className="line-clamp-4 text-lg font-semibold leading-snug viet-sans">
+              {event.location}
+            </span>
+          </TimelineDetail>
+
+          <TimelineDetail icon={<Users size={19} />} label="Quy mô">
+            <span className="line-clamp-5 whitespace-pre-line text-base font-medium leading-snug viet-sans">
+              {event.scale || "Đang cập nhật..."}
+            </span>
+          </TimelineDetail>
+        </div>
+      </div>
+    </div>
+  </article>
+));
+
+TimelineInfoPage.displayName = "TimelineInfoPage";
+
+function TimelineDetail({
+  icon,
+  label,
+  children,
+}: {
+  icon: ReactNode;
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="flex items-start gap-6">
+      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-[var(--bronze)]/10 bg-white text-[var(--bronze)] shadow-sm">
+        {icon}
+      </div>
+      <div className="flex-1">
+        <span className="mb-1.5 block text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--bronze)] opacity-50">
+          {label}
+        </span>
+        {children}
+      </div>
+    </div>
+  );
+}
 
 export function Timeline() {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const activeEvent = events[activeIndex];
+  const flipBookRef = useRef<any>(null);
 
   const scrollToIndex = (index: number) => {
-    if (scrollContainerRef.current) {
-      const buttons = scrollContainerRef.current.querySelectorAll(".timeline-point");
-      const targetButton = buttons[index] as HTMLElement;
-      if (targetButton) {
-        const containerWidth = scrollContainerRef.current.offsetWidth;
-        const buttonLeft = targetButton.offsetLeft;
-        const buttonWidth = targetButton.offsetWidth;
-        
-        scrollContainerRef.current.scrollTo({
-          left: buttonLeft - containerWidth / 2 + buttonWidth / 2,
-          behavior: "smooth"
-        });
-      }
-    }
+    if (!scrollContainerRef.current) return;
+
+    const buttons = scrollContainerRef.current.querySelectorAll(".timeline-point");
+    const targetButton = buttons[index] as HTMLElement;
+    if (!targetButton) return;
+
+    const containerWidth = scrollContainerRef.current.offsetWidth;
+    const buttonLeft = targetButton.offsetLeft;
+    const buttonWidth = targetButton.offsetWidth;
+
+    scrollContainerRef.current.scrollTo({
+      left: buttonLeft - containerWidth / 2 + buttonWidth / 2,
+      behavior: "smooth",
+    });
   };
 
   useEffect(() => {
     scrollToIndex(activeIndex);
   }, [activeIndex]);
 
+  const flipToIndex = (index: number) => {
+    const safeIndex = Math.max(0, Math.min(events.length - 1, index));
+    flipBookRef.current?.pageFlip()?.flip(safeIndex * 2, "top");
+  };
+
   const handlePrev = () => {
-    setActiveIndex(prev => Math.max(0, prev - 1));
+    flipBookRef.current?.pageFlip()?.flipPrev("top");
   };
 
   const handleNext = () => {
-    setActiveIndex(prev => Math.min(events.length - 1, prev + 1));
-  };
-
-  const onDragEnd = (event: any, info: any) => {
-    const offset = info.offset.x;
-    if (offset < -DRAG_THRESHOLD && activeIndex < events.length - 1) {
-      handleNext();
-    } else if (offset > DRAG_THRESHOLD && activeIndex > 0) {
-      handlePrev();
-    }
+    flipBookRef.current?.pageFlip()?.flipNext("top");
   };
 
   return (
-    <section className="bg-[var(--ivory)] py-32 px-6 relative overflow-hidden min-h-screen flex flex-col justify-center">
+    <section className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-[var(--ivory)] px-6 py-32">
       <style dangerouslySetInnerHTML={{ __html: `
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        /* Premium Vietnamese Font Support */
         .viet-serif { font-family: "Playfair Display", "Times New Roman", serif; }
         .viet-sans { font-family: "Inter", "Segoe UI", Roboto, sans-serif; }
+        .timeline-flipbook { margin: 0 auto !important; filter: drop-shadow(0 52px 70px rgba(46, 26, 23, 0.18)); }
+        .timeline-flipbook .page { border-radius: 2.35rem; overflow: hidden; background: white; }
+        .timeline-page { box-shadow: inset -18px 0 28px rgba(96, 61, 36, 0.08), inset 1px 0 0 rgba(255, 255, 255, 0.8); }
+        @media (prefers-reduced-motion: reduce) {
+          .timeline-flipbook { transition: none !important; }
+        }
       `}} />
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
+      <div className="relative z-10 mx-auto w-full max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-24"
+          className="mb-24 text-center"
         >
-          <span className="text-[var(--bronze)] viet-sans tracking-[0.4em] uppercase text-xs mb-4 block opacity-60">The Journey</span>
+          <span className="mb-4 block text-xs uppercase tracking-[0.4em] text-[var(--bronze)] opacity-60 viet-sans">The Journey</span>
           <h2
             className="text-[var(--deep-brown)] viet-serif"
             style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 600, letterSpacing: "-0.02em" }}
@@ -171,38 +255,37 @@ export function Timeline() {
           </h2>
         </motion.div>
 
-        {/* ── Premium Scrubber Navigation ─────────────────────────── */}
-        <div className="relative mb-40 group max-w-full">
-          <div className="absolute left-0 right-0 top-6 h-[1px] bg-[var(--bronze)]/10" />
-          <motion.div 
-            className="absolute left-0 top-6 h-[2px] bg-gradient-to-r from-[var(--bronze)]/20 via-[var(--bronze)] to-[var(--bronze)]/20 z-10 origin-left"
+        <div className="group relative mb-40 max-w-full">
+          <div className="absolute left-0 right-0 top-6 h-px bg-[var(--bronze)]/10" />
+          <motion.div
+            className="absolute left-0 top-6 z-10 h-[2px] origin-left bg-gradient-to-r from-[var(--bronze)]/20 via-[var(--bronze)] to-[var(--bronze)]/20"
             animate={{ width: `${(activeIndex / (events.length - 1)) * 100}%` }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
           />
 
-          <div 
+          <div
             ref={scrollContainerRef}
-            className="relative flex items-start gap-40 overflow-x-auto py-3 px-[45%] no-scrollbar snap-x snap-mandatory cursor-grab active:cursor-grabbing"
+            className="no-scrollbar relative flex cursor-grab snap-x snap-mandatory items-start gap-40 overflow-x-auto px-[45%] py-3 active:cursor-grabbing"
           >
             {events.map((event, idx) => (
               <button
                 key={event.id}
-                onClick={() => setActiveIndex(idx)}
-                className="timeline-point relative flex-shrink-0 flex flex-col items-center group snap-center"
+                onClick={() => flipToIndex(idx)}
+                className="timeline-point group relative flex flex-shrink-0 snap-center flex-col items-center"
                 style={{ width: "160px" }}
               >
-                <div className="relative mb-10 z-20">
-                  <motion.div 
-                    animate={{ 
+                <div className="relative z-20 mb-10">
+                  <motion.div
+                    animate={{
                       scale: activeIndex === idx ? 1.6 : 1,
                       backgroundColor: activeIndex === idx ? "var(--bronze)" : "white",
-                      borderColor: activeIndex === idx ? "var(--bronze)" : "var(--bronze)",
-                      borderWidth: activeIndex === idx ? "0px" : "1.5px"
+                      borderColor: "var(--bronze)",
+                      borderWidth: activeIndex === idx ? "0px" : "1.5px",
                     }}
-                    className="w-3.5 h-3.5 rounded-full shadow-sm transition-all duration-300" 
+                    className="h-3.5 w-3.5 rounded-full shadow-sm transition-all duration-300"
                   />
                   {activeIndex === idx && (
-                    <motion.div 
+                    <motion.div
                       layoutId="active-ring"
                       className="absolute -inset-3 rounded-full border border-[var(--bronze)]/30"
                     />
@@ -210,10 +293,10 @@ export function Timeline() {
                 </div>
 
                 <div className={`text-center transition-all duration-700 ${activeIndex === idx ? "opacity-100" : "opacity-30"}`}>
-                  <div className="text-[var(--bronze)] viet-serif font-bold text-3xl tracking-tighter mb-3">
+                  <div className="mb-3 text-3xl font-bold tracking-tighter text-[var(--bronze)] viet-serif">
                     {event.year}
                   </div>
-                  <div className="text-[var(--deep-brown)] viet-sans text-[9px] uppercase tracking-[0.2em] font-semibold max-w-[140px] mx-auto leading-relaxed">
+                  <div className="mx-auto max-w-[140px] text-[9px] font-semibold uppercase leading-relaxed tracking-[0.2em] text-[var(--deep-brown)] viet-sans">
                     {event.title.split("“")[1]?.split("”")[0] || event.title}
                   </div>
                 </div>
@@ -222,117 +305,57 @@ export function Timeline() {
           </div>
         </div>
 
-        {/* ── Stable Immersive Content Card ────────────────────────── */}
-        <div className="relative px-4 lg:px-12 max-w-6xl mx-auto h-[750px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeIndex}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.15}
-              onDragEnd={onDragEnd}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="bg-white rounded-[3rem] overflow-hidden shadow-[0_60px_120px_-40px_rgba(46,26,23,0.15)] border border-[var(--bronze)]/5 cursor-grab active:cursor-grabbing w-full h-full"
+        <div className="relative mx-auto h-[600px] max-w-[1030px] px-4 lg:px-8">
+          <div className="absolute inset-x-8 bottom-[-14px] h-12 rounded-b-[2.5rem] bg-[var(--deep-brown)]/10 blur-2xl lg:inset-x-10" />
+          <div className="absolute inset-x-8 inset-y-0 rounded-[2.5rem] border border-[var(--bronze)]/10 bg-[#f4ead9] shadow-[0_30px_90px_-60px_rgba(46,26,23,0.3)] lg:inset-x-10" />
+
+          <div className="relative z-10 flex h-full items-center justify-center">
+            <HTMLFlipBook
+              ref={flipBookRef}
+              width={480}
+              height={600}
+              size="stretch"
+              minWidth={320}
+              maxWidth={480}
+              minHeight={520}
+              maxHeight={600}
+              drawShadow
+              flippingTime={850}
+              usePortrait={false}
+              startZIndex={10}
+              autoSize
+              maxShadowOpacity={0.42}
+              showCover={false}
+              mobileScrollSupport={false}
+              swipeDistance={24}
+              clickEventForward
+              useMouseEvents
+              className="timeline-flipbook rounded-[3rem]"
+              style={{}}
+              startPage={0}
+              onFlip={(event: { data: number }) => setActiveIndex(Math.floor(Number(event.data) / 2))}
             >
-              <div className="grid lg:grid-cols-2 gap-0 h-full">
-                <div className="relative h-[350px] lg:h-full overflow-hidden bg-[var(--deep-brown)]">
-                  <ImageWithFallback
-                    src={activeEvent.image}
-                    alt={activeEvent.title}
-                    className="w-full h-full object-cover opacity-95 transition-transform duration-1000"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent lg:hidden" />
-                </div>
+              {events.flatMap((event) => [
+                <TimelineImagePage key={`${event.id}-image`} event={event} />,
+                <TimelineInfoPage key={`${event.id}-info`} event={event} />,
+              ])}
+            </HTMLFlipBook>
+          </div>
 
-                <div className="p-10 lg:p-16 flex flex-col justify-center h-full relative bg-[var(--ivory)]/10 backdrop-blur-xl">
-                  {/* Background Watermark */}
-                  <div className="absolute top-0 right-0 text-[18rem] viet-serif font-bold text-[var(--bronze)]/[0.04] select-none pointer-events-none translate-x-1/3 -translate-y-1/3 leading-none">
-                    {activeEvent.year}
-                  </div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="relative z-10"
-                  >
-                    <div className="mb-10 min-h-[120px] flex items-center border-l-4 border-[var(--bronze)] pl-8">
-                      <h3 className="text-[var(--deep-brown)] viet-serif text-3xl lg:text-4xl font-semibold leading-tight tracking-tight">
-                        {activeEvent.title}
-                      </h3>
-                    </div>
-
-                    <div className="space-y-6 lg:space-y-8">
-                      <div className="flex items-start gap-6">
-                        <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                          <Calendar size={20} />
-                        </div>
-                        <div className="flex-1">
-                          <span className="block text-[9px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-1.5 opacity-50">Thời gian</span>
-                          <span className="text-[var(--deep-brown)] viet-sans text-lg lg:text-xl font-medium tracking-tight">{activeEvent.time}</span>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-6">
-                        <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                          <MapPin size={20} />
-                        </div>
-                        <div className="flex-1">
-                          <span className="block text-[9px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-1.5 opacity-50">Địa điểm</span>
-                          <span className="text-[var(--deep-brown)] viet-sans text-lg lg:text-xl font-medium leading-relaxed tracking-tight">{activeEvent.location}</span>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-6">
-                        <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                          <Users size={20} />
-                        </div>
-                        <div className="flex-1">
-                          <span className="block text-[9px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-1.5 opacity-50">Quy mô</span>
-                          <div className="text-[var(--deep-brown)] viet-sans text-base lg:text-lg font-normal tracking-tight whitespace-pre-line leading-snug">
-                            {activeEvent.scale || "Đang cập nhật..."}
-                          </div>
-                        </div>
-                      </div>
-
-                      {(activeEvent.composition) && (
-                        <div className="flex items-start gap-6">
-                          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                            <Info size={20} />
-                          </div>
-                          <div className="flex-1">
-                            <span className="block text-[9px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-1.5 opacity-50">Thành phần / Ghi chú</span>
-                            <p className="text-[var(--deep-brown)] viet-sans text-sm lg:text-base leading-relaxed opacity-80">
-                              {activeEvent.composition}
-                            </p>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Nav Buttons */}
           <div className="hidden xl:block">
-            <button 
+            <button
               onClick={handlePrev}
-              className="absolute left-[-80px] top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-white border border-[var(--bronze)]/5 text-[var(--bronze)] shadow-xl hover:bg-[var(--bronze)] hover:text-white transition-all disabled:opacity-0 group"
+              className="group absolute left-[-80px] top-1/2 z-20 h-14 w-14 -translate-y-1/2 rounded-full border border-[var(--bronze)]/5 bg-white text-[var(--bronze)] shadow-xl transition-all hover:bg-[var(--bronze)] hover:text-white disabled:opacity-0"
               disabled={activeIndex === 0}
             >
-              <ChevronLeft size={28} className="mx-auto group-hover:-translate-x-1 transition-transform" />
+              <ChevronLeft size={28} className="mx-auto transition-transform group-hover:-translate-x-1" />
             </button>
-            <button 
+            <button
               onClick={handleNext}
-              className="absolute right-[-80px] top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-white border border-[var(--bronze)]/5 text-[var(--bronze)] shadow-xl hover:bg-[var(--bronze)] hover:text-white transition-all disabled:opacity-0 group"
+              className="group absolute right-[-80px] top-1/2 z-20 h-14 w-14 -translate-y-1/2 rounded-full border border-[var(--bronze)]/5 bg-white text-[var(--bronze)] shadow-xl transition-all hover:bg-[var(--bronze)] hover:text-white disabled:opacity-0"
               disabled={activeIndex === events.length - 1}
             >
-              <ChevronRight size={28} className="mx-auto group-hover:translate-x-1 transition-transform" />
+              <ChevronRight size={28} className="mx-auto transition-transform group-hover:translate-x-1" />
             </button>
           </div>
         </div>

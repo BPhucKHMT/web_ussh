@@ -1,6 +1,6 @@
 import { ArticleContent, DropCap } from "../components/ArticleContent";
 import { motion } from "motion/react";
-import { ProgressiveImg } from "../components/ProgressiveImg";
+import { LivingProcessImage } from "../components/LivingProcessImage";
 import ketImage from "../../imports/Ket1.jpg";
 
 export function ConclusionPage() {
@@ -63,20 +63,11 @@ export function ConclusionPage() {
         </p>
       </ArticleContent>
 
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        viewport={{ once: true, margin: "-100px" }}
-        className="w-full relative mt-16 mb-0 block overflow-hidden"
-      >
-        <ProgressiveImg
-          src={ketImage}
-          alt="Dư âm Tóc Xanh Vạt Áo"
-          wrapperClass="w-full"
-          className="w-full h-auto object-contain block"
-        />
-      </motion.div>
+      <LivingProcessImage
+        src={ketImage}
+        alt="Dư âm Tóc Xanh Vạt Áo"
+        variant="fullBleed"
+      />
     </motion.div>
   );
 }

@@ -1,10 +1,8 @@
-import { ChapterCover } from "../components/ChapterCover";
 import { ArticleContent, DropCap, PullQuote } from "../components/ArticleContent";
 import { Timeline } from "../components/Timeline";
 import { NextChapter } from "../components/NextChapter";
 import { ProgressiveImg } from "../components/ProgressiveImg";
 import { motion } from "motion/react";
-import biaChuong1 from "../../imports/bia_chuong1.JPG";
 import img2272 from "../../imports/IMG_2272.JPG";
 import eventCrowd from "../../imports/656004211_866480449779741_7990508900861967897_n.jpg";
 import eventColor from "../../imports/z7716763529757_5036ad59810120b5aba05f65287d4727.jpg";
@@ -18,13 +16,25 @@ export function Chapter1Page() {
       transition={{ duration: 0.5 }}
       className="bg-[var(--ivory)] min-h-screen"
     >
-      <ChapterCover
-        id="chuong-1"
-        number="Chương 1"
-        title={'Không phải \u201cCosplay\u201d, đây là văn hoá'}
-        description=""
-        image={biaChuong1}
-      />
+      <div className="max-w-4xl mx-auto px-6 mb-16 pt-24 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-4 text-[var(--bronze)] font-sans text-xl tracking-widest uppercase"
+        >
+          Chương 1
+        </motion.div>
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-[var(--deep-brown)] font-serif font-semibold leading-tight"
+          style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}
+        >
+          Không phải “Cosplay”, đây là văn hoá
+        </motion.h1>
+      </div>
 
       <section className="py-24 px-6 bg-[var(--ivory)]">
         <div className="max-w-4xl mx-auto">
@@ -49,13 +59,13 @@ export function Chapter1Page() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="w-full h-full flex items-center justify-center"
+              className="group w-full h-full flex items-center justify-center overflow-hidden rounded-2xl border border-[var(--bronze)]/10 bg-[#fbf3e7] shadow-[0_18px_45px_rgba(75,46,43,0.12)] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(75,46,43,0.22)]"
             >
               <ProgressiveImg
                 src={img2272}
                 alt="Khánh My trong trang phục Việt phục"
                 wrapperClass="w-full h-full"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain transition-[transform,filter] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform group-hover:scale-[1.055] group-hover:brightness-[1.04]"
               />
             </motion.div>
             <p className="text-[var(--wood-brown)] text-sm italic mt-4 text-center"
@@ -97,12 +107,12 @@ export function Chapter1Page() {
       {/* ── Full-width image ──────────────────────────────────────────── */}
       <div className="w-full max-w-6xl mx-auto px-6 py-12">
         <figure className="w-full flex flex-col items-center">
-          <div className="w-full">
+          <div className="group w-full overflow-hidden rounded-2xl border border-[var(--bronze)]/10 bg-[#fbf3e7] shadow-[0_18px_45px_rgba(75,46,43,0.12)] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(75,46,43,0.22)]">
             <ProgressiveImg
               src={eventCrowd}
               alt="Sự thành công của đêm hội"
               wrapperClass="w-full"
-              className="w-full h-auto object-contain"
+              className="w-full h-auto object-contain transition-[transform,filter] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform group-hover:scale-[1.045] group-hover:brightness-[1.04]"
               style={{ maxHeight: "90vh" }}
             />
           </div>
@@ -131,13 +141,13 @@ export function Chapter1Page() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="w-full h-full flex items-center justify-center"
+              className="group w-full h-full flex items-center justify-center overflow-hidden rounded-2xl border border-[var(--bronze)]/10 bg-[#fbf3e7] shadow-[0_18px_45px_rgba(75,46,43,0.12)] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(75,46,43,0.22)]"
             >
               <ProgressiveImg
                 src={eventColor}
                 alt="Hình ảnh sự kiện"
                 wrapperClass="w-full h-full"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain transition-[transform,filter] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform group-hover:scale-[1.055] group-hover:brightness-[1.04]"
               />
             </motion.div>
             <p className="text-[var(--wood-brown)] text-sm italic mt-4 text-center"
