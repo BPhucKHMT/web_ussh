@@ -874,9 +874,9 @@ const garments: Garment[] = [
   // 5. Áo Viên Lĩnh (polygon segments từ CSV)
   {
     id: "vien-linh",
-    name: "Áo Viên Lĩnh",
+    name: "Viên Lĩnh",
     description:
-      "Áo Viên Lĩnh (cổ tròn) là kiểu áo phổ biến trong trang phục thường nhật và lễ phục cấp thấp tại Việt Nam qua nhiều triều đại. Cổ áo hình tròn — đặc điểm định danh — phân biệt rõ với Giao Lĩnh (cổ chéo) và Lập Lĩnh (cổ đứng). Áo mang tính tiện dụng cao, phù hợp nhiều tầng lớp từ thường dân đến quan lại.",
+      "Viên Lĩnh (cổ tròn) là kiểu áo phổ biến trong trang phục thường nhật và lễ phục cấp thấp tại Việt Nam qua nhiều triều đại. Cổ áo hình tròn — đặc điểm định danh — phân biệt rõ với Giao Lĩnh (cổ chéo) và Lập Lĩnh (cổ đứng). Áo mang tính tiện dụng cao, phù hợp nhiều tầng lớp từ thường dân đến quan lại.",
     fullImage: vlImg,
     segments: vlSegments,
     hotspots: [
@@ -994,13 +994,13 @@ export function GarmentExplainer() {
             className="text-[var(--ivory)] mb-4"
             style={{ fontFamily: "var(--font-serif)", fontSize: "2.5rem", fontWeight: 600 }}
           >
-            Giải phẫu Việt phục
+            Phân biệt 5 loại Việt phục
           </h2>
           <p
             className="text-[var(--silk-gold)] max-w-2xl mx-auto"
             style={{ fontFamily: "var(--font-sans)", fontSize: "1.125rem" }}
           >
-            Di chuột vào từng vùng trên trang phục để khám phá chi tiết cấu tạo và ý nghĩa văn hoá.
+            Di chuột vào từng vùng trên trang phục để khám phá chi tiết cấu tạo và <span className="whitespace-nowrap">ý nghĩa văn hoá</span>.
           </p>
         </div>
 

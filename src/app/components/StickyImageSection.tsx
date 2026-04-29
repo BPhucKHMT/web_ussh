@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ProgressiveImg } from "./ProgressiveImg";
+import img6716 from "../../imports/IMG_6716.JPG";
+import hs4 from "../../imports/hs4.jpg";
 
 interface ImageEntry {
   src: string;
@@ -10,11 +12,11 @@ interface ImageEntry {
 
 const IMAGES: ImageEntry[] = [
   {
-    src: "src/imports/IMG_6716.JPG",
+    src: img6716,
     alt: "Các bạn trẻ tự tin trong trang phục truyền thống trên phố",
   },
   {
-    src: "src/imports/hs4.jpg",
+    src: hs4,
     alt: "Chi tiết hoa văn trên Việt phục",
   },
 ];
@@ -149,23 +151,6 @@ export function StickyImageSection() {
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.7 }}
                 >
-                  {/* Section number + heading */}
-                  <div className="flex items-center gap-3 mb-5">
-                    <span
-                      className="text-[var(--silk-gold)] tabular-nums"
-                      style={{ fontFamily: "var(--font-serif)", fontSize: "1.5rem", fontWeight: 600 }}
-                    >
-                      0{i + 1}
-                    </span>
-                    <span className="flex-1 h-px bg-[var(--bronze)]/30" />
-                  </div>
-                  <h3
-                    className="mb-5 text-[var(--deep-brown)]"
-                    style={{ fontFamily: "var(--font-serif)", fontSize: "1.65rem", fontWeight: 600, lineHeight: 1.25 }}
-                  >
-                    {block.heading}
-                  </h3>
-
                   {/* Paragraphs */}
                   <div className="space-y-5">
                     {block.body.map((para, j) => (

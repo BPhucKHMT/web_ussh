@@ -1,4 +1,3 @@
-import { ChapterCover } from "../components/ChapterCover";
 import { ArticleContent, DropCap, PullQuote, Subhead } from "../components/ArticleContent";
 import { ImageBlock } from "../components/ImageBlock";
 import { GarmentExplainer } from "../components/GarmentExplainer";
@@ -12,14 +11,27 @@ export function Chapter2Page() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
+      className="pt-24"
     >
-      <ChapterCover
-        id="chuong-2"
-        number="Chương 2"
-        title="Dòng chảy Việt phục"
-        description=""
-        image="https://images.unsplash.com/photo-1763400126795-d83e07d3449e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxWaWV0bmFtZXNlJTIwY3VsdHVyZSUyMGZhYnJpYyUyMHNpbGslMjBlbWJyb2lkZXJ5fGVufDF8fHx8MTc3NzM2NjExNXww&ixlib=rb-4.1.0&q=80&w=1080"
-      />
+      <div className="max-w-4xl mx-auto px-6 mb-16 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-4 text-[var(--bronze)] font-sans text-xl tracking-widest uppercase"
+        >
+          Chương 2
+        </motion.div>
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-[var(--deep-brown)] font-serif font-semibold leading-tight"
+          style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}
+        >
+          Dòng chảy Việt phục
+        </motion.h1>
+      </div>
 
       <ArticleContent>
         <DropCap>

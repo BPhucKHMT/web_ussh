@@ -46,7 +46,7 @@ export function Chapter3Page() {
           Hành trình bảo tồn văn hóa của thế hệ trẻ không dừng lại ở những buổi diễu hành rực rỡ sắc màu, mà nó còn len lỏi vào từng xưởng may, từng bản vẽ và những đêm thức trắng nghiên cứu tư liệu để phục chế.
         </DropCap>
         <p>
-          Đứng sau sự hồi sinh của những tà áo Nhật Bình, áo ngũ thân hay những chiếc yếm đào tại Ngày hội Việt phục “Tóc Xanh Vạt Áo” chính là những “nhạc trưởng” trẻ tuổi. Họ là những người chọn dấn thân vào con đường phục dựng di sản với thái độ nghiêm túc và bền bỉ. Với những nhà sáng lập trẻ, việc “mặc lịch sử” không phải là một cuộc dạo chơi nhất thời, mà là trách nhiệm của những người tiếp nối và gìn gi���, nơi quy trình làm nghề trở thành thước đo cho lòng tự tôn dân tộc.
+          Đứng sau sự hồi sinh của những tà áo Nhật Bình, áo ngũ thân hay những chiếc yếm đào tại Ngày hội Việt phục “Tóc Xanh Vạt Áo” chính là những “nhạc trưởng” trẻ tuổi. Họ là những người chọn dấn thân vào con đường phục dựng di sản với thái độ nghiêm túc và bền bỉ. Với những nhà sáng lập trẻ, việc “mặc lịch sử” không phải là một cuộc dạo chơi nhất thời, mà là trách nhiệm của những người tiếp nối và gìn giữ, nơi quy trình làm nghề trở thành thước đo cho lòng tự tôn dân tộc.
         </p>
 
         <p>

@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import hs2 from "../../imports/hs2.jpg";
 
 export function IntroSection() {
   const [visible, setVisible] = useState(false);
@@ -69,7 +70,7 @@ export function IntroSection() {
             }}
           >
             <ImageWithFallback
-              src="src/imports/hs2.jpg"
+              src={hs2}
               alt="Phan Hồng Sơn trong trang phục trực lĩnh đại khâm"
               className="w-full h-full object-cover object-[center_30%]"
             />
