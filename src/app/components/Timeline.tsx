@@ -147,10 +147,13 @@ export function Timeline() {
 
   return (
     <section className="bg-[var(--ivory)] py-32 px-6 relative overflow-hidden min-h-screen flex flex-col justify-center">
-      {/* CSS to hide scrollbar across all browsers */}
       <style dangerouslySetInnerHTML={{ __html: `
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Font refinements for Vietnamese */
+        .premium-serif { font-family: "Playfair Display", "Times New Roman", serif; }
+        .premium-sans { font-family: "Inter", "Segoe UI", Roboto, sans-serif; }
       `}} />
 
       <div className="absolute inset-0 pointer-events-none">
@@ -165,17 +168,17 @@ export function Timeline() {
           viewport={{ once: true }}
           className="text-center mb-24"
         >
-          <span className="text-[var(--bronze)] font-sans tracking-[0.4em] uppercase text-xs mb-4 block opacity-60">The Journey</span>
+          <span className="text-[var(--bronze)] premium-sans tracking-[0.4em] uppercase text-xs mb-4 block opacity-60">The Journey</span>
           <h2
-            className="text-[var(--deep-brown)]"
-            style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 600, letterSpacing: "-0.02em" }}
+            className="text-[var(--deep-brown)] premium-serif"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 600, letterSpacing: "-0.02em" }}
           >
             Hành trình lan tỏa Việt phục
           </h2>
         </motion.div>
 
-        {/* ── Premium Scrubber Navigation ─────────────────────────── */}
-        <div className="relative mb-40 group max-w-full">
+        {/* ── Scrubber Navigation ─────────────────────────────────── */}
+        <div className="relative mb-32 group max-w-full">
           <div className="absolute left-0 right-0 top-6 h-[1px] bg-[var(--bronze)]/10" />
           
           <motion.div 
@@ -211,16 +214,13 @@ export function Timeline() {
                       className="absolute -inset-3 rounded-full border border-[var(--bronze)]/30"
                     />
                   )}
-                  {activeIndex === idx && (
-                    <motion.div className="absolute -inset-2 rounded-full bg-[var(--bronze)]/20 animate-ping" />
-                  )}
                 </div>
 
                 <div className={`text-center transition-all duration-700 ${activeIndex === idx ? "opacity-100" : "opacity-30"}`}>
-                  <div className="text-[var(--bronze)] font-serif font-bold text-3xl tracking-tighter mb-3 leading-none">
+                  <div className="text-[var(--bronze)] premium-serif font-bold text-3xl tracking-tighter mb-3 leading-none">
                     {event.year}
                   </div>
-                  <div className="text-[var(--deep-brown)] font-sans text-[9px] uppercase tracking-[0.2em] font-semibold max-w-[140px] mx-auto leading-relaxed">
+                  <div className="text-[var(--deep-brown)] premium-sans text-[9px] uppercase tracking-[0.2em] font-semibold max-w-[140px] mx-auto leading-relaxed">
                     {event.title.split("“")[1]?.split("”")[0] || event.title}
                   </div>
                 </div>
@@ -229,8 +229,8 @@ export function Timeline() {
           </div>
         </div>
 
-        {/* ── FIXED SIZE Immersive Content Card ─────────────────────── */}
-        <div className="relative px-4 lg:px-12 max-w-6xl mx-auto h-[720px]">
+        {/* ── Stabilized Immersive Card ───────────────────────────── */}
+        <div className="relative px-4 lg:px-12 max-w-6xl mx-auto min-h-[720px] lg:h-[720px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
@@ -238,14 +238,14 @@ export function Timeline() {
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.15}
               onDragEnd={onDragEnd}
-              initial={{ opacity: 0, scale: 0.98, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 1.02, y: -10 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               className="bg-white rounded-[3rem] overflow-hidden shadow-[0_60px_120px_-40px_rgba(46,26,23,0.15)] border border-[var(--bronze)]/5 cursor-grab active:cursor-grabbing w-full h-full"
             >
               <div className="grid lg:grid-cols-2 gap-0 h-full">
-                <div className="relative h-[400px] lg:h-full overflow-hidden bg-[var(--deep-brown)]">
+                <div className="relative h-[350px] lg:h-full overflow-hidden bg-[var(--deep-brown)]">
                   <ImageWithFallback
                     src={activeEvent.image}
                     alt={activeEvent.title}
@@ -254,67 +254,74 @@ export function Timeline() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent lg:hidden" />
                 </div>
 
-                <div className="p-12 lg:p-20 flex flex-col justify-center h-full relative bg-[var(--ivory)]/10 backdrop-blur-xl">
-                  <div className="absolute top-0 right-0 text-[18rem] font-serif font-bold text-[var(--bronze)]/[0.04] select-none pointer-events-none translate-x-1/3 -translate-y-1/3 leading-none">
+                <div className="p-10 lg:p-16 flex flex-col justify-center h-full relative bg-[var(--ivory)]/10 backdrop-blur-xl">
+                  {/* Watermark Year */}
+                  <div className="absolute top-0 right-0 text-[18rem] premium-serif font-bold text-[var(--bronze)]/[0.04] select-none pointer-events-none translate-x-1/3 -translate-y-1/3 leading-none">
                     {activeEvent.year}
                   </div>
 
                   <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
                     className="relative z-10"
                   >
-                    <div className="mb-14 h-[140px] flex items-center border-l-4 border-[var(--bronze)] pl-8">
-                      <h3 className="text-[var(--deep-brown)] font-serif text-3xl lg:text-4xl font-semibold leading-[1.15] tracking-tight">
+                    <div className="mb-10 min-h-[120px] flex items-center border-l-4 border-[var(--bronze)] pl-8">
+                      <h3 className="text-[var(--deep-brown)] premium-serif text-3xl lg:text-4xl font-semibold leading-tight tracking-tight">
                         {activeEvent.title}
                       </h3>
                     </div>
 
-                    <div className="space-y-10">
-                      <div className="flex items-start gap-8 h-[64px]">
-                        <div className="w-12 h-12 rounded-[1rem] bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                          <Calendar size={22} />
+                    <div className="space-y-6 lg:space-y-8">
+                      {/* Row: Time */}
+                      <div className="flex items-start gap-6">
+                        <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
+                          <Calendar size={18} />
                         </div>
                         <div className="flex-1">
-                          <span className="block text-[10px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-2 opacity-50">Thời gian</span>
-                          <span className="text-[var(--deep-brown)] font-sans text-xl lg:text-2xl font-medium tracking-tight">{activeEvent.time}</span>
+                          <span className="block text-[9px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-1 opacity-50">Thời gian</span>
+                          <span className="text-[var(--deep-brown)] premium-sans text-lg lg:text-xl font-medium tracking-tight">{activeEvent.time}</span>
                         </div>
                       </div>
 
-                      <div className="flex items-start gap-8 h-[64px]">
-                        <div className="w-12 h-12 rounded-[1rem] bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                          <MapPin size={22} />
+                      {/* Row: Location */}
+                      <div className="flex items-start gap-6">
+                        <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
+                          <MapPin size={18} />
                         </div>
                         <div className="flex-1">
-                          <span className="block text-[10px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-2 opacity-50">Địa điểm</span>
-                          <span className="text-[var(--deep-brown)] font-sans text-xl lg:text-2xl font-medium leading-tight tracking-tight">{activeEvent.location}</span>
+                          <span className="block text-[9px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-1 opacity-50">Địa điểm</span>
+                          <span className="text-[var(--deep-brown)] premium-sans text-lg lg:text-xl font-medium leading-relaxed tracking-tight">{activeEvent.location}</span>
                         </div>
                       </div>
 
-                      <div className="flex items-start gap-8 h-[64px]">
-                        <div className="w-12 h-12 rounded-[1rem] bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                          <Users size={22} />
+                      {/* Row: Scale */}
+                      <div className="flex items-start gap-6">
+                        <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
+                          <Users size={18} />
                         </div>
                         <div className="flex-1">
-                          <span className="block text-[10px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-2 opacity-50">Quy mô</span>
-                          <span className="text-[var(--deep-brown)] font-sans text-lg lg:text-xl font-medium tracking-tight leading-snug">
+                          <span className="block text-[9px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-1 opacity-50">Quy mô</span>
+                          <span className="text-[var(--deep-brown)] premium-sans text-base lg:text-lg font-normal tracking-tight leading-snug">
                             {activeEvent.scale || "Đang cập nhật..."}
                           </span>
                         </div>
                       </div>
 
-                      <div className="flex items-start gap-8 h-[120px]">
-                        <div className="w-12 h-12 rounded-[1rem] bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                          <Info size={22} />
+                      {/* Row: Info */}
+                      {activeEvent.composition && (
+                        <div className="flex items-start gap-6">
+                          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
+                            <Info size={18} />
+                          </div>
+                          <div className="flex-1">
+                            <span className="block text-[9px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-1 opacity-50">Thành phần / Ghi chú</span>
+                            <p className="text-[var(--deep-brown)] premium-sans text-sm lg:text-base leading-relaxed opacity-80">
+                              {activeEvent.composition}
+                            </p>
+                          </div>
                         </div>
-                        <div className="flex-1 overflow-hidden">
-                          <span className="block text-[10px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-2 opacity-50">Thành phần / Ghi chú</span>
-                          <p className="text-[var(--deep-brown)] font-sans text-sm lg:text-base leading-relaxed opacity-90 line-clamp-4">
-                            {activeEvent.composition || "Thông tin về thành phần tham gia đang được đội ngũ biên tập bổ sung."}
-                          </p>
-                        </div>
-                      </div>
+                      )}
                     </div>
                   </motion.div>
                 </div>
@@ -322,7 +329,7 @@ export function Timeline() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Nav Buttons */}
+          {/* Navigation Buttons */}
           <div className="hidden xl:block">
             <button 
               onClick={handlePrev}
