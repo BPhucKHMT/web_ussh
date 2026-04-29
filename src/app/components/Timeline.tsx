@@ -147,6 +147,7 @@ export function Timeline() {
 
   return (
     <section className="bg-[var(--ivory)] py-32 px-6 relative overflow-hidden min-h-screen flex flex-col justify-center">
+      {/* CSS to hide scrollbar across all browsers */}
       <style dangerouslySetInnerHTML={{ __html: `
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -173,7 +174,7 @@ export function Timeline() {
           </h2>
         </motion.div>
 
-        {/* ── Scrubber Navigation ─────────────────────────────────── */}
+        {/* ── Premium Scrubber Navigation ─────────────────────────── */}
         <div className="relative mb-40 group max-w-full">
           <div className="absolute left-0 right-0 top-6 h-[1px] bg-[var(--bronze)]/10" />
           
@@ -228,7 +229,7 @@ export function Timeline() {
           </div>
         </div>
 
-        {/* ── Content Card ────────────────────────────────────────── */}
+        {/* ── FIXED SIZE Immersive Content Card ─────────────────────── */}
         <div className="relative px-4 lg:px-12 max-w-6xl mx-auto h-[720px]">
           <AnimatePresence mode="wait">
             <motion.div
@@ -237,10 +238,10 @@ export function Timeline() {
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.15}
               onDragEnd={onDragEnd}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -30 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
+              initial={{ opacity: 0, scale: 0.98, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 1.02, y: -10 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="bg-white rounded-[3rem] overflow-hidden shadow-[0_60px_120px_-40px_rgba(46,26,23,0.15)] border border-[var(--bronze)]/5 cursor-grab active:cursor-grabbing w-full h-full"
             >
               <div className="grid lg:grid-cols-2 gap-0 h-full">
@@ -270,10 +271,10 @@ export function Timeline() {
                       </h3>
                     </div>
 
-                    <div className="space-y-8">
+                    <div className="space-y-10">
                       <div className="flex items-start gap-8 h-[64px]">
-                        <div className="w-11 h-11 rounded-[1rem] bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                          <Calendar size={20} />
+                        <div className="w-12 h-12 rounded-[1rem] bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
+                          <Calendar size={22} />
                         </div>
                         <div className="flex-1">
                           <span className="block text-[10px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-2 opacity-50">Thời gian</span>
@@ -282,8 +283,8 @@ export function Timeline() {
                       </div>
 
                       <div className="flex items-start gap-8 h-[64px]">
-                        <div className="w-11 h-11 rounded-[1rem] bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                          <MapPin size={20} />
+                        <div className="w-12 h-12 rounded-[1rem] bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
+                          <MapPin size={22} />
                         </div>
                         <div className="flex-1">
                           <span className="block text-[10px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-2 opacity-50">Địa điểm</span>
@@ -292,8 +293,8 @@ export function Timeline() {
                       </div>
 
                       <div className="flex items-start gap-8 h-[64px]">
-                        <div className="w-11 h-11 rounded-[1rem] bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                          <Users size={20} />
+                        <div className="w-12 h-12 rounded-[1rem] bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
+                          <Users size={22} />
                         </div>
                         <div className="flex-1">
                           <span className="block text-[10px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-2 opacity-50">Quy mô</span>
@@ -304,8 +305,8 @@ export function Timeline() {
                       </div>
 
                       <div className="flex items-start gap-8 h-[120px]">
-                        <div className="w-11 h-11 rounded-[1rem] bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
-                          <Info size={20} />
+                        <div className="w-12 h-12 rounded-[1rem] bg-white flex items-center justify-center text-[var(--bronze)] shadow-sm border border-[var(--bronze)]/10 flex-shrink-0">
+                          <Info size={22} />
                         </div>
                         <div className="flex-1 overflow-hidden">
                           <span className="block text-[10px] uppercase tracking-[0.2em] text-[var(--bronze)] font-bold mb-2 opacity-50">Thành phần / Ghi chú</span>
