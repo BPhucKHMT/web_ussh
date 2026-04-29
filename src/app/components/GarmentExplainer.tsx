@@ -22,6 +22,20 @@ import atThanAo    from "../../imports/five_types/AoTac/aotac_thanao.jpg";
 import atVatAo     from "../../imports/five_types/AoTac/aotac_vatao.jpg";
 
 import nbAo        from "../../imports/five_types/NhatBinh/nhatbinh_ao.jpg";
+import nbCoAo      from "../../imports/five_types/NhatBinh/nhatbinh_coao.jpg";
+import nbHoaVan    from "../../imports/five_types/NhatBinh/nhatbinh_hoavan.jpg";
+import nbNutAo     from "../../imports/five_types/NhatBinh/nhatbinh_nutao.jpg";
+import nbTayAo     from "../../imports/five_types/NhatBinh/nhatbinh_tayao.jpg";
+
+import ntcChatLieu from "../../imports/five_types/NguThanTayChen/nguthantaychen_chatlieu.jpg";
+import ntcHoaVan   from "../../imports/five_types/NguThanTayChen/nguthantaychen_hoavan.jpg";
+import ntcOngTayAo from "../../imports/five_types/NguThanTayChen/nguthantaychen_ongtayao.jpg";
+
+import vlCoAo      from "../../imports/five_types/VienLinh/vienlinh_coao.jpg";
+import vlPhanDuoi  from "../../imports/five_types/VienLinh/vienlinh_phanduoi.jpg";
+import vlTayAo     from "../../imports/five_types/VienLinh/vienlinh_tayao.jpg";
+import vlVatAo     from "../../imports/five_types/VienLinh/vienlinh_vatao.jpg";
+import vlYemVaThatLung from "../../imports/five_types/VienLinh/vienlinh_yemvathatlung.jpg";
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
@@ -60,6 +74,7 @@ function poly(nums: number[]): string {
 // ─── Giao Lĩnh segments ────────────────────────────────────────────────────────
 
 const glSegments: SegmentPoly[] = [
+  // class 2 - Cổ áo
   {
     hotspotId: "gl-co-ao",
     points: poly([
@@ -95,6 +110,7 @@ const glSegments: SegmentPoly[] = [
       0.458981612446959,0.272,0.45615275813295614,0.264,0.4314002828854314,0.248,
     ]),
   },
+  // class 8 - Vạt áo (trái)
   {
     hotspotId: "gl-vat",
     points: poly([
@@ -108,59 +124,64 @@ const glSegments: SegmentPoly[] = [
       0.4205876944837341,0.3493825,0.3998974540311174,0.310095,
     ]),
   },
+  // class 6 - Ống tay áo (trái)
   {
     hotspotId: "gl-tay",
     points: poly([
-      0.22661951909476663,0.5020355,0.22015417256011316,0.56051,
-      0.208515558698727,0.6080205,0.21498161244695896,0.6564445,
-      0.2279123055162659,0.692991,0.2486025459688826,0.7295375000000001,
-      0.2705855728429986,0.757861,0.3572248939179632,0.763343,
-      0.44515700141442716,0.7724795,0.5343826025459688,0.7688250000000001,
-      0.5408479490806224,0.7277105,0.5330891089108911,0.6756314999999999,
-      0.5188649222065064,0.5915744999999999,0.5188649222065064,0.555028,
-      0.51498585572843,0.5248775000000001,0.4632609618104668,0.5066039999999999,
-      0.3779144271570014,0.5002085000000001,0.27575813295615276,0.49746749999999995,
+      0.22661951909476663,0.5020355,0.22015417256011316,0.56051,0.208515558698727,0.6080205,
+      0.21498161244695896,0.6564445,0.2279123055162659,0.692991,0.2486025459688826,0.7295375000000001,
+      0.2705855728429986,0.757861,0.3572248939179632,0.763343,0.44515700141442716,0.7724795,
+      0.5343826025459688,0.7688250000000001,0.5408479490806224,0.7277105,0.5330891089108911,0.6756314999999999,
+      0.5188649222065064,0.5915744999999999,0.5188649222065064,0.555028,0.51498585572843,0.5248775000000001,
+      0.4632609618104668,0.5066039999999999,0.3779144271570014,0.5002085000000001,0.27575813295615276,0.49746749999999995,
       0.23825742574257427,0.4947265,
     ]),
   },
+  // class 8 - Vạt áo (phải)
   {
     hotspotId: "gl-vat",
     points: poly([
-      0.5738224893917964,0.3202115,0.605504243281471,0.3591835,
-      0.627487270155587,0.39573,0.630073550212164,0.43319,
-      0.6171421499292786,0.467909,0.6119695898161245,0.48983699999999997,
-      0.6701598302687412,0.495319,0.6817984441301272,0.536434,
-      0.7102468175388967,0.5501385,0.7102468175388967,0.5209015,
-      0.6921428571428572,0.46378250000000004,0.6662807637906648,0.422668,
-      0.6507630834512023,0.3906895,0.6249009900990099,0.34957499999999997,
-      0.6080905233380481,0.3285605,
+      0.5738224893917964,0.3202115,0.605504243281471,0.3591835,0.627487270155587,0.39573,
+      0.630073550212164,0.43319,0.6171421499292786,0.467909,0.6119695898161245,0.48983699999999997,
+      0.6701598302687412,0.495319,0.6817984441301272,0.536434,0.7102468175388967,0.5501385,
+      0.7102468175388967,0.5209015,0.6921428571428572,0.46378250000000004,0.6662807637906648,0.422668,
+      0.6507630834512023,0.3906895,0.6249009900990099,0.34957499999999997,0.6080905233380481,0.3285605,
     ]),
   },
-  {
-    hotspotId: "gl-quan",
-    points: poly([
-      0.5350289957567185,0.645908,0.5938656294200849,0.642479,
-      0.6585219236209335,0.64522,0.6753323903818953,0.690903,
-      0.6779186704384724,0.7621685,0.6817984441301272,0.8142474999999999,
-      0.6908500707213578,0.858103,0.6960226308345121,0.931196,
-      0.7076605374823196,0.998807,0.5667107496463932,0.9995,
-      0.4503295615275813,0.9987975,0.36498373408769447,0.9987975,
-      0.30032743988684585,0.9995,0.3106725601131542,0.88459,
-      0.31196534653465346,0.8261155,0.3261895332390382,0.7630725,
-      0.4296393210749646,0.773123,0.4994681753889675,0.775864,
-      0.5421414427157001,0.7685544999999999,0.555072135785007,0.729267,
-      0.5486067892503537,0.6908935,
-    ]),
-  },
+  // class 6 - Ống tay áo (phải)
   {
     hotspotId: "gl-tay",
     points: poly([
-      0.6869702970297029,0.7556165,0.7141258840169731,0.7889255000000001,
-      0.7231782178217822,0.8446589999999999,0.742574964639321,0.9049605000000001,
-      0.7115396039603961,0.9670895,0.667573550212164,0.5915744999999999,
-      0.7283507779349363,0.6052795,0.739988684582744,0.676545,
-      0.7412814710042434,0.749638,0.7477475247524753,0.8163355,
-      0.7438677510608204,0.9058745,
+      0.6869702970297029,0.7556165,0.7141258840169731,0.7889255000000001,0.7231782178217822,0.8446589999999999,
+      0.742574964639321,0.9049605000000001,0.7115396039603961,0.9670895,0.667573550212164,0.5915744999999999,
+      0.7283507779349363,0.6052795,0.739988684582744,0.676545,0.7412814710042434,0.749638,
+      0.7477475247524753,0.8163355,0.7438677510608204,0.9058745,
+    ]),
+  },
+  // class 7 - Phần dưới
+  {
+    hotspotId: "gl-quan",
+    points: poly([
+      0.3147100424328147,0.91375,0.4596888260254597,0.91375,0.5533946251768034,0.915,
+      0.6382602545968883,0.9125,0.6966053748231966,0.9125,0.7178217821782178,0.9995,
+      0.297029702970297,0.9965750000000001,
+    ]),
+  },
+  // class 8 - Vạt áo (giữa)
+  {
+    hotspotId: "gl-vat",
+    points: poly([
+      0.33062234794908063,0.7628250000000001,0.31294200848656295,0.905325,0.7019094766619519,0.912825,
+      0.6647807637906648,0.542825,0.5215700141442716,0.5903250000000001,0.5498585572842999,0.765325,
+      0.48974540311173975,0.776575,
+    ]),
+  },
+  // class 9 - Yếm lót
+  {
+    hotspotId: "gl-yem",
+    points: poly([
+      0.493454738330976,0.299504,0.5198345120226309,0.2962125,0.5477659123055163,0.3576495,
+      0.4717305516265913,0.27427100000000004,0.5151796322489393,0.273174,0.5206103253182461,0.29731,
     ]),
   },
 ];
@@ -513,112 +534,102 @@ const atSegments: SegmentPoly[] = [
 ];
 
 // ─── Áo Viên Lĩnh segments (polygons từ CSV) ────────────────────────────────
-// class 2 = Cổ tròn | class 9 = Nút / đường khóa | class 8×2 = Tay áo
-// class 6×2 = Thân áo (vạt) | class 7 = Thân dưới
+// class 2 = Cổ áo | class 9 = Yếm lót | class 8 = Vạt áo
+// class 6 = Ống tay áo | class 7 = Phần dưới
 
 const vlSegments: SegmentPoly[] = [
-  // class 2 – Cổ tròn
+  // class 2 - Cổ áo
   {
     hotspotId: "vl-co",
     points: poly([
-      0.4596888260254597,0.2135, 0.4596888260254597,0.2185,
-      0.4667609618104668,0.2355, 0.471004243281471,0.2675,
-      0.49222065063649223,0.2725, 0.5084865629420084,0.273,
-      0.5247524752475248,0.2705, 0.5438472418670438,0.263,
-      0.5473833097595474,0.259, 0.5480905233380481,0.254,
-      0.5424328147100425,0.2305, 0.5431400282885431,0.225,
-      0.5396039603960396,0.217, 0.536067892503536,0.215,
-      0.5261669024045261,0.2235, 0.512022630834512,0.2475,
-      0.504950495049505,0.252, 0.47454031117397455,0.2195,
+      0.4596888260254597,0.2135,0.4596888260254597,0.2185,0.4667609618104668,0.2355,
+      0.471004243281471,0.2675,0.49222065063649223,0.2725,0.5084865629420084,0.273,
+      0.5247524752475248,0.2705,0.5438472418670438,0.263,0.5473833097595474,0.259,
+      0.5480905233380481,0.254,0.5424328147100425,0.2305,0.5431400282885431,0.225,
+      0.5396039603960396,0.217,0.536067892503536,0.215,0.5261669024045261,0.2235,
+      0.512022630834512,0.2475,0.504950495049505,0.252,0.47454031117397455,0.2195,
       0.4596888260254597,0.214,
     ]),
   },
-  // class 9 – Nút / đường đóng khuy
+  // class 9 - Yếm lót
   {
-    hotspotId: "vl-nut",
+    hotspotId: "vl-yem",
     points: poly([
-      0.5466760961810466,0.262, 0.5304101838755304,0.268,
-      0.5268741159830269,0.2675, 0.5254596888260255,0.2655,
-      0.5198019801980198,0.2655, 0.5198019801980198,0.269,
-      0.5155586987270155,0.27, 0.5113154172560113,0.275,
-      0.5077793493635078,0.275, 0.49504950495049505,0.269,
-      0.49787835926449786,0.265, 0.4908062234794908,0.2645,
-      0.47029702970297027,0.2685, 0.46746817538896746,0.282,
-      0.4667609618104668,0.318, 0.4738330975954738,0.365,
-      0.4780763790664781,0.3765, 0.48302687411598305,0.38,
-      0.5091937765205092,0.382, 0.5183875530410184,0.385,
-      0.5297029702970297,0.386, 0.5466760961810466,0.38,
-      0.5544554455445545,0.3745, 0.5657708628005658,0.336,
-      0.5650636492220651,0.314, 0.5551626591230552,0.267,
-      0.5495049504950495,0.262,
+      0.5466760961810466,0.262,0.5304101838755304,0.268,0.5268741159830269,0.2675,
+      0.5254596888260255,0.2655,0.5198019801980198,0.2655,0.5198019801980198,0.269,
+      0.5155586987270155,0.27,0.5113154172560113,0.275,0.5077793493635078,0.275,
+      0.49504950495049505,0.269,0.49787835926449786,0.265,0.4908062234794908,0.2645,
+      0.47029702970297027,0.2685,0.46746817538896746,0.282,0.4667609618104668,0.318,
+      0.4738330975954738,0.365,0.4780763790664781,0.3765,0.48302687411598305,0.38,
+      0.5091937765205092,0.382,0.5183875530410184,0.385,0.5297029702970297,0.386,
+      0.5466760961810466,0.38,0.5544554455445545,0.3745,0.5657708628005658,0.336,
+      0.5650636492220651,0.314,0.5551626591230552,0.267,0.5495049504950495,0.262,
     ]),
   },
-  // class 8 – Tay áo trái
+  // class 8 - Vạt áo (trái)
+  {
+    hotspotId: "vl-vat",
+    points: poly([
+      0.45045403111739746,0.21692699999999998,0.41531400282885433,0.24386000000000002,
+      0.3813528995756718,0.2511915,0.3426753889674682,0.2845185,0.28796039603960394,0.3278435,
+      0.27947029702970294,0.3491725,0.3002241867043847,0.3738345,0.4190876944837341,0.3804995,
+      0.4728585572842998,0.38183249999999996,0.4690855728429986,0.34384,0.4502178217821782,0.2978495,
+      0.46153818953323905,0.2658555,
+    ]),
+  },
+  // class 8 - Vạt áo (phải)
+  {
+    hotspotId: "vl-vat",
+    points: poly([
+      0.5648366336633663,0.375329,0.6190792079207921,0.371168,0.6558705799151343,0.37250150000000004,
+      0.6737942008486563,0.352505,0.687001414427157,0.335175,0.6530403111739745,0.298516,
+      0.6351166902404526,0.262523,0.5879483734087695,0.239194,0.5464405940594059,0.2245305,
+      0.5539879773691655,0.2618565,0.5643649222065064,0.298516,0.5671944837340878,0.3278435,
+    ]),
+  },
+  // class 6 - Ống tay áo (trái)
   {
     hotspotId: "vl-tay",
     points: poly([
-      0.45045403111739746,0.216927, 0.41531400282885433,0.24386,
-      0.3813528995756718,0.2511915, 0.3426753889674682,0.2845185,
-      0.28796039603960394,0.3278435, 0.27947029702970294,0.3491725,
-      0.3002241867043847,0.3738345, 0.4190876944837341,0.3804995,
-      0.4728585572842998,0.3818325, 0.4690855728429986,0.34384,
-      0.4502178217821782,0.2978495, 0.46153818953323905,0.2658555,
+      0.5188472418670438,0.386167,0.49549929278642146,0.4139315,0.48983946251768035,0.4505905,
+      0.48606577086280056,0.49324900000000005,0.4804059405940594,0.545239,0.4756888260254597,0.633888,
+      0.4605954738330976,0.6918765,0.4388981612446959,0.723204,0.39550353606789246,0.721204,
+      0.32946817538896744,0.7052075,0.30494059405940593,0.6318885000000001,0.2926775106082037,0.599895,
+      0.28796039603960394,0.5559035,0.27947029702970294,0.4925825,0.2596598302687412,0.458589,
+      0.2672065063649222,0.41993,0.2823005657708628,0.3732725,0.32003465346534654,0.3746055,
+      0.3568253182461103,0.381271,0.3964469589816125,0.3819375,0.4417277227722772,0.38060449999999996,
+      0.48606577086280056,0.38727,
     ]),
   },
-  // class 8 – Tay áo phải
+  // class 6 - Ống tay áo (phải)
   {
     hotspotId: "vl-tay",
     points: poly([
-      0.5648366336633663,0.375329, 0.6190792079207921,0.371168,
-      0.6558705799151343,0.3725015, 0.6737942008486563,0.352505,
-      0.687001414427157,0.335175, 0.6530403111739745,0.298516,
-      0.6351166902404526,0.262523, 0.5879483734087695,0.239194,
-      0.5464405940594059,0.2245305, 0.5539879773691655,0.2618565,
-      0.5643649222065064,0.298516, 0.5671944837340878,0.3278435,
-    ]),
-  },
-  // class 6 – Thân áo / vạt trái
-  {
-    hotspotId: "vl-than",
-    points: poly([
-      0.5188472418670438,0.386167, 0.49549929278642146,0.4139315,
-      0.48983946251768035,0.4505905, 0.48606577086280056,0.493249,
-      0.4804059405940594,0.545239, 0.4756888260254597,0.633888,
-      0.4605954738330976,0.6918765, 0.4388981612446959,0.723204,
-      0.39550353606789246,0.721204, 0.32946817538896744,0.7052075,
-      0.30494059405940593,0.6318885, 0.2926775106082037,0.599895,
-      0.28796039603960394,0.5559035, 0.27947029702970294,0.4925825,
-      0.2596598302687412,0.458589, 0.2672065063649222,0.41993,
-      0.2823005657708628,0.3732725, 0.32003465346534654,0.3746055,
-      0.3568253182461103,0.381271, 0.3964469589816125,0.3819375,
-      0.4417277227722772,0.3806045, 0.48606577086280056,0.38727,
-    ]),
-  },
-  // class 6 – Thân áo / vạt phải
-  {
-    hotspotId: "vl-than",
-    points: poly([
-      0.5683741159830269,0.375329, 0.5841753889674681,0.418597,
-      0.5407807637906648,0.4225965, 0.5351202263083451,0.4505905,
-      0.5351202263083451,0.4812515, 0.5530445544554455,0.536574,
-      0.5671944837340878,0.601228, 0.5851188118811881,0.662549,
-      0.5964391796322489,0.6965425, 0.6237963224893918,0.714539,
-      0.6454936350777934,0.7125395, 0.670021216407355,0.6805455,
-      0.6728507779349363,0.6058935, 0.693604667609618,0.513245,
-      0.7115289957567185,0.480585, 0.7011520509193776,0.4165975,
-      0.7039816124469589,0.3792715, 0.704925035360679,0.3606085,
+      0.5683741159830269,0.375329,0.5841753889674681,0.418597,0.5407807637906648,0.4225965,
+      0.5351202263083451,0.4505905,0.5351202263083451,0.4812515,0.5530445544554455,0.536574,
+      0.5671944837340878,0.601228,0.5851188118811881,0.6625489999999999,0.5964391796322489,0.6965425000000001,
+      0.6237963224893918,0.714539,0.6454936350777934,0.7125395,0.670021216407355,0.6805454999999999,
+      0.6728507779349363,0.6058935,0.693604667609618,0.513245,0.7115289957567185,0.480585,
+      0.7011520509193776,0.4165975,0.7039816124469589,0.3792715,0.704925035360679,0.3606085,
       0.6322864214992928,0.3706065,
     ]),
   },
-  // class 7 – Thân dưới (hem)
+  // class 7 - Phần dưới
   {
     hotspotId: "vl-duoi",
     points: poly([
-      0.3124879773691655,0.7088065, 0.37852263083451204,0.7213615,
-      0.428521216407355,0.7313595, 0.5351202263083451,0.730693,
-      0.6237963224893918,0.7253605, 0.6388896746817538,0.753355,
-      0.6530403111739745,0.960648, 0.3558818953323904,0.9613145,
-      0.2690933521923621,0.914657,
+      0.3124879773691655,0.7088065,0.37852263083451204,0.7213615,0.428521216407355,0.7313595,
+      0.5351202263083451,0.730693,0.6237963224893918,0.7253605,0.6388896746817538,0.753355,
+      0.6530403111739745,0.9606480000000001,0.3558818953323904,0.9613145,0.2690933521923621,0.914657,
+    ]),
+  },
+  // class 8 - Vạt áo (giữa)
+  {
+    hotspotId: "vl-vat",
+    points: poly([
+      0.4985855728429986,0.50125,0.4791371994342291,0.65,0.43847241867043846,0.72625,
+      0.617043847241867,0.72625,0.5834512022630834,0.665,0.556930693069307,0.57375,
+      0.5374823196605375,0.4975,0.518033946251768,0.45875,
     ]),
   },
 ];
@@ -717,6 +728,17 @@ const SVG_HOVER_CSS = `
   .gp { fill: transparent; stroke: transparent; stroke-width: 0; cursor: pointer; }
   .gp { transition: fill 0.18s ease, stroke 0.18s ease; }
 
+  /* focus mode: khi đã chọn 1 vùng, các vùng khác mờ đi */
+  .gp.dim {
+    fill: rgba(12, 24, 24, 0.07);
+    stroke: rgba(203, 162, 83, 0.12);
+    stroke-width: 0.0014;
+  }
+  .gp.dim:hover {
+    fill: rgba(12, 24, 24, 0.10);
+    stroke: rgba(203, 162, 83, 0.16);
+  }
+
   /* Giao Lĩnh */
   .gp-gl-co-ao:hover,.gp-gl-co-ao.on { fill:rgba(203,162,83,0.40); stroke:rgba(203,162,83,0.88); stroke-width:0.003; }
   .gp-gl-vat:hover,  .gp-gl-vat.on   { fill:rgba(180,110,50,0.40); stroke:rgba(180,110,50,0.88); stroke-width:0.003; }
@@ -744,10 +766,16 @@ const SVG_HOVER_CSS = `
 
   /* Áo Viên Lĩnh */
   .gp-vl-co:hover,   .gp-vl-co.on    { fill:rgba(165,55,50,0.45);  stroke:rgba(165,55,50,0.90);  stroke-width:0.003; }
-  .gp-vl-nut:hover,  .gp-vl-nut.on   { fill:rgba(70,138,98,0.45);  stroke:rgba(70,138,98,0.88);  stroke-width:0.003; }
+  .gp-vl-yem:hover,  .gp-vl-yem.on   { fill:rgba(70,138,98,0.45);  stroke:rgba(70,138,98,0.88);  stroke-width:0.003; }
   .gp-vl-tay:hover,  .gp-vl-tay.on   { fill:rgba(50,118,108,0.40); stroke:rgba(50,118,108,0.88); stroke-width:0.003; }
-  .gp-vl-than:hover, .gp-vl-than.on  { fill:rgba(185,135,55,0.35); stroke:rgba(185,135,55,0.85); stroke-width:0.003; }
+  .gp-vl-vat:hover,  .gp-vl-vat.on   { fill:rgba(185,135,55,0.35); stroke:rgba(185,135,55,0.85); stroke-width:0.003; }
   .gp-vl-duoi:hover, .gp-vl-duoi.on  { fill:rgba(138,98,52,0.40);  stroke:rgba(138,98,52,0.88);  stroke-width:0.003; }
+
+  /* selected state boost */
+  .gp.on {
+    stroke-width: 0.0046 !important;
+    filter: drop-shadow(0 0 2px rgba(255, 223, 163, 0.45));
+  }
 `;
 
 // ─── Colour swatches for legend ────────────────────────────────────────────────
@@ -768,8 +796,8 @@ const SEG_SWATCH: Record<string, string> = {
   "ntc-hoa":  "rgb(185,135,55)", "ntc-tay": "rgb(50,118,108)",
   "ntc-vai":  "rgb(138,98,52)",
   // Áo Viên Lĩnh
-  "vl-co":    "rgb(165,55,50)",  "vl-nut":  "rgb(70,138,98)",
-  "vl-tay":   "rgb(50,118,108)", "vl-than": "rgb(185,135,55)",
+  "vl-co":    "rgb(165,55,50)",  "vl-yem":   "rgb(70,138,98)",
+  "vl-tay":   "rgb(50,118,108)", "vl-vat":   "rgb(185,135,55)",
   "vl-duoi":  "rgb(138,98,52)",
 };
 
@@ -803,11 +831,11 @@ const garments: Garment[] = [
     segments: nbSegments,
     hotspots: [
       { id:"nb-ao",   title:"Áo",        description:"Nhật Bình thuộc dạng áo đối khâm khoác ngoài, được cài khuy chính giữa. Dáng áo hình chuông, xòe rộng, không chiết eo.", x:50, y:55, imageUrl:nbAo },
-      { id:"nb-co",   title:"Cổ áo",     description:"Cổ áo hình chữ nhật đặc trưng — điểm phân biệt nổi bật nhất của Nhật Bình so với các dạng áo cung đình khác.",            x:50, y:30, imageUrl:"" },
-      { id:"nb-tay",  title:"Tay áo",    description:"Tay áo rộng, được thêu hoa văn dải ngũ sắc tượng trưng cho ngũ hành (Kim, Mộc, Thủy, Hỏa, Thổ).",                        x:20, y:75, imageUrl:"" },
-      { id:"nb-hoa",  title:"Hoa văn",   description:"Hoa văn dạng tròn phụng ổ, loan ổ đan xen hoa lá, chữ Phúc, chữ Thọ… đính kim tuyến lấp lánh theo cấp bậc.",            x:25, y:65, imageUrl:"" },
-      { id:"nb-nut",  title:"Nút áo",    description:"Nút áo tròn bằng ngọc điêu khắc tinh xảo — điểm khác biệt quan trọng so với áo Phi Phong nhà Minh.",                     x:50, y:50, imageUrl:"" },
-      { id:"nb-dang", title:"Hình dáng", description:"Không có ráp vai, thân áo xòe rộng hình chữ A, che phủ toàn thân từ vai xuống gần đất.",                                x:70, y:45, imageUrl:"" },
+      { id:"nb-co",   title:"Cổ áo",     description:"Cổ áo hình chữ nhật đặc trưng — điểm phân biệt nổi bật nhất của Nhật Bình so với các dạng áo cung đình khác.",            x:50, y:30, imageUrl:nbCoAo },
+      { id:"nb-tay",  title:"Tay áo",    description:"Tay áo rộng, được thêu hoa văn dải ngũ sắc tượng trưng cho ngũ hành (Kim, Mộc, Thủy, Hỏa, Thổ).",                        x:20, y:75, imageUrl:nbTayAo },
+      { id:"nb-hoa",  title:"Hoa văn",   description:"Hoa văn dạng tròn phụng ổ, loan ổ đan xen hoa lá, chữ Phúc, chữ Thọ… đính kim tuyến lấp lánh theo cấp bậc.",            x:25, y:65, imageUrl:nbHoaVan },
+      { id:"nb-nut",  title:"Nút áo",    description:"Nút áo tròn bằng ngọc điêu khắc tinh xảo — điểm khác biệt quan trọng so với áo Phi Phong nhà Minh.",                     x:50, y:50, imageUrl:nbNutAo },
+      { id:"nb-dang", title:"Hình dáng", description:"Không có ráp vai, thân áo xòe rộng hình chữ A, che phủ toàn thân từ vai xuống gần đất.",                                x:70, y:45, imageUrl:nbAo },
     ],
   },
 
@@ -820,12 +848,11 @@ const garments: Garment[] = [
     fullImage: atImg,
     segments: atSegments,
     hotspots: [
-      { id:"at-co",   title:"Cổ áo",    description:"Cổ đứng hình bán nguyệt (Lập Lĩnh) — nét đặc trưng của dòng áo Ngũ Thân triều Nguyễn.",                            x:50, y:17, imageUrl:"" },
-      { id:"at-hoa",  title:"Hoa văn",  description:"Hoa văn được thêu hoặc dệt chìm, thể hiện địa vị qua mô típ long, phượng, chữ Thọ.",                               x:50, y:48, imageUrl:atHoaVan },
-      { id:"at-than", title:"Thân áo",  description:"Thân áo mặt trước và mặt sau đều ghép từ 2 mảnh vải riêng biệt — nguồn gốc tên 'Ngũ Thân'.",                       x:50, y:35, imageUrl:atThanAo },
-      { id:"at-tay",  title:"Tay áo",   description:"Tay áo thụng rộng, dài tới hoặc quá khuỷu tay. Khi chắp trước ngực tạo thành nếp gấp uy nghi đặc trưng.",         x:18, y:50, imageUrl:atVatAo },
-      { id:"at-vai",  title:"Chất vải", description:"May bằng vải sa, tơ, gấm trơn — chất liệu phản ánh địa vị và dịp mặc của người dùng.",                            x:50, y:72, imageUrl:atChatVai },
-      { id:"at-ngoc", title:"Phụ kiện", description:"Áo Tấc thường đi kèm ngọc đeo, vòng cổ, vòng tay (nữ) hoặc thẻ bài (nam).",                                       x:50, y:22, imageUrl:atNgoc },
+      { id:"at-co",   title:"Ngọc",      description:"Chi tiết ngọc đeo cổ/đính kèm trong bộ Áo Tấc — điểm nhấn phụ kiện quan trọng tạo sự trang trọng.",                   x:50, y:17, imageUrl:atNgoc },
+      { id:"at-hoa",  title:"Hoa văn",   description:"Hoa văn được thêu hoặc dệt chìm, thể hiện địa vị qua mô típ long, phượng, chữ Thọ.",                               x:50, y:48, imageUrl:atHoaVan },
+      { id:"at-than", title:"Thân áo",   description:"Thân áo mặt trước và mặt sau đều ghép từ 2 mảnh vải riêng biệt — nguồn gốc tên 'Ngũ Thân'.",                       x:50, y:35, imageUrl:atThanAo },
+      { id:"at-tay",  title:"Tay áo",    description:"Tay áo thụng rộng, dài tới hoặc quá khuỷu tay. Khi chắp trước ngực tạo thành nếp gấp uy nghi đặc trưng.",         x:18, y:50, imageUrl:atVatAo },
+      { id:"at-vai",  title:"Chất vải",  description:"May bằng vải sa, tơ, gấm trơn — chất liệu phản ánh địa vị và dịp mặc của người dùng.",                            x:50, y:72, imageUrl:atChatVai },
     ],
   },
 
@@ -838,9 +865,9 @@ const garments: Garment[] = [
     fullImage: ntcImg,
     segments: ntcSegments,
     hotspots: [
-      { id:"ntc-hoa", title:"Hoa văn",    description:"Hoa văn tinh tế thêu hoặc dệt chìm trên thân áo — thường là hoa cúc, hoa mai, tứ quý theo mùa.",              x:50, y:42, imageUrl:"" },
-      { id:"ntc-tay", title:"Tay chẽn",  description:"Tay áo bó sát (tay chẽn) — điểm khác biệt cốt lõi so với Áo Tấc tay thụng, cho phép hoạt động linh hoạt.",   x:22, y:58, imageUrl:"" },
-      { id:"ntc-vai", title:"Thân dưới", description:"May từ năm thân vải (ngũ thân), thân dưới rộng thoáng; dùng màu lam, nâu, đen cho thường nhật.",              x:50, y:76, imageUrl:"" },
+      { id:"ntc-hoa", title:"Hoa văn",    description:"Hoa văn tinh tế thêu hoặc dệt chìm trên thân áo — thường là hoa cúc, hoa mai, tứ quý theo mùa.",              x:50, y:42, imageUrl:ntcHoaVan },
+      { id:"ntc-tay", title:"Tay chẽn",  description:"Tay áo bó sát (tay chẽn) — điểm khác biệt cốt lõi so với Áo Tấc tay thụng, cho phép hoạt động linh hoạt.",   x:22, y:58, imageUrl:ntcOngTayAo },
+      { id:"ntc-vai", title:"Thân dưới", description:"May từ năm thân vải (ngũ thân), thân dưới rộng thoáng; dùng màu lam, nâu, đen cho thường nhật.",              x:50, y:76, imageUrl:ntcChatLieu },
     ],
   },
 
@@ -853,11 +880,11 @@ const garments: Garment[] = [
     fullImage: vlImg,
     segments: vlSegments,
     hotspots: [
-      { id:"vl-co",   title:"Cổ tròn",   description:"Cổ áo hình tròn (Viên Lĩnh) — đặc điểm định danh, phân biệt với Giao Lĩnh (cổ chéo) và Lập Lĩnh (cổ đứng).",           x:50, y:17, imageUrl:"" },
-      { id:"vl-nut",  title:"Nút áo",    description:"Đường khóa và nút áo từ cổ xuống eo — thường cài khuy tròn bằng vải bọc, xương, ngọc hoặc kim loại mạ vàng.",           x:50, y:32, imageUrl:"" },
-      { id:"vl-tay",  title:"Tay áo",    description:"Tay áo có thể thụng hoặc chẽn tùy biến thể — tay thụng dành lễ phục, tay chẽn tiện dụng cho sinh hoạt thường nhật.",     x:20, y:30, imageUrl:"" },
-      { id:"vl-than", title:"Thân áo",   description:"Thân áo năm mảnh (ngũ thân), cổ tròn, khuy cài sang phải — dáng đứng thẳng, vạt dài tới gối.",                          x:50, y:52, imageUrl:"" },
-      { id:"vl-duoi", title:"Thân dưới", description:"Phần dưới thân áo rộng thoáng, xẻ tà hai bên để dễ di chuyển — thường dài tới hoặc dưới đầu gối.",                      x:50, y:85, imageUrl:"" },
+      { id:"vl-co",   title:"Cổ áo",     description:"Cổ áo tròn (Viên Lĩnh) — đặc điểm định danh rõ nhất của nhóm áo này.",                                                       x:50, y:17, imageUrl:vlCoAo },
+      { id:"vl-yem",  title:"Yếm lót",   description:"Lớp yếm/buộc trong giúp cố định thân trước, thường thấy ở phần giữa ngực-bụng của bộ mặc.",                              x:50, y:32, imageUrl:vlYemVaThatLung },
+      { id:"vl-tay",  title:"Ống tay áo",description:"Ống tay áo gồm các mảng vạt tay hai bên, giúp áo giữ dáng và thuận tiện vận động.",                                      x:20, y:30, imageUrl:vlTayAo },
+      { id:"vl-vat",  title:"Vạt áo",     description:"Vạt áo là phần thân trước/sườn tạo nếp rủ chính của trang phục, quyết định phom dáng tổng thể.",                        x:50, y:52, imageUrl:vlVatAo },
+      { id:"vl-duoi", title:"Phần dưới",  description:"Phần dưới thân áo rộng thoáng, xẻ tà giúp di chuyển linh hoạt và giữ tỷ lệ thẩm mỹ.",                                  x:50, y:85, imageUrl:vlPhanDuoi },
     ],
   },
 ];
@@ -884,17 +911,22 @@ const SVGOverlay = memo(function SVGOverlay({
       style={{ pointerEvents: "none" }}
     >
       <style>{SVG_HOVER_CSS}</style>
-      {segments.map((seg, idx) => (
-        <polygon
-          key={`${seg.hotspotId}-${idx}`}
-          points={seg.points}
-          className={`gp gp-${seg.hotspotId}${activeHotspotId === seg.hotspotId ? " on" : ""}`}
-          style={{ pointerEvents: "auto" }}
-          onMouseEnter={(e) => onPolyEnter(seg.hotspotId, e)}
-          onMouseLeave={onPolyLeave}
-          onClick={() => onPolyClick(seg.hotspotId)}
-        />
-      ))}
+      {segments.map((seg, idx) => {
+        const isActive = activeHotspotId === seg.hotspotId;
+        const shouldDim = !!activeHotspotId && !isActive;
+
+        return (
+          <polygon
+            key={`${seg.hotspotId}-${idx}`}
+            points={seg.points}
+            className={`gp gp-${seg.hotspotId}${isActive ? " on" : ""}${shouldDim ? " dim" : ""}`}
+            style={{ pointerEvents: "auto" }}
+            onMouseEnter={(e) => onPolyEnter(seg.hotspotId, e)}
+            onMouseLeave={onPolyLeave}
+            onClick={() => onPolyClick(seg.hotspotId)}
+          />
+        );
+      })}
     </svg>
   );
 });

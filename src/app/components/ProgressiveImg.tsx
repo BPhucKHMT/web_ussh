@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
+const loadedImageSources = new Set<string>();
+
 interface ProgressiveImgProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
@@ -29,16 +31,23 @@ export function ProgressiveImg({
   style,
   ...rest
 }: ProgressiveImgProps) {
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(() => loadedImageSources.has(src));
   const imgRef = useRef<HTMLImageElement>(null);
 
-  // Handle cached images (already complete when component mounts / re-navigates back)
   useEffect(() => {
+    setLoaded(loadedImageSources.has(src));
+
     const img = imgRef.current;
     if (img && img.complete && img.naturalWidth > 0) {
+      loadedImageSources.add(src);
       setLoaded(true);
     }
   }, [src]);
+
+  const markLoaded = () => {
+    loadedImageSources.add(src);
+    setLoaded(true);
+  };
 
   return (
     <div
@@ -67,8 +76,8 @@ export function ProgressiveImg({
         alt={alt}
         loading={eager ? "eager" : "lazy"}
         decoding="async"
-        // @ts-ignore – fetchPriority is valid in React 18 + modern browsers
-        fetchPriority={eager ? "high" : "auto"}
+        // @ts-ignore – fetchpriority is supported by modern browsers but not typed in older React DOM typings
+        fetchpriority={eager ? "high" : "auto"}
         className={className}
         style={{
           ...style,
@@ -76,7 +85,8 @@ export function ProgressiveImg({
           opacity: loaded ? 1 : 0,
           transition: "opacity 0.45s ease",
         }}
-        onLoad={() => setLoaded(true)}
+        onLoad={markLoaded}
+        onError={() => setLoaded(true)}
         {...rest}
       />
 

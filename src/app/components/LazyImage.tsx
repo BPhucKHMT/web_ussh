@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
+const loadedLazyImageSources = new Set<string>();
+
 interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
@@ -10,21 +12,37 @@ interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
  * Uses IntersectionObserver (no library) to avoid filter/re-render overhead.
  */
 export function LazyImage({ src, alt, className = "", style, ...rest }: LazyImageProps) {
-  const [inView, setInView]   = useState(false);
-  const [loaded, setLoaded]   = useState(false);
-  const sentinelRef           = useRef<HTMLSpanElement>(null);
+  const [inView, setInView] = useState(() => loadedLazyImageSources.has(src));
+  const [loaded, setLoaded] = useState(() => loadedLazyImageSources.has(src));
+  const sentinelRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    if (loadedLazyImageSources.has(src)) {
+      setInView(true);
+      setLoaded(true);
+      return;
+    }
+
+    setLoaded(false);
     if (!sentinelRef.current) return;
+
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) { setInView(true); io.disconnect(); }
+        if (entry.isIntersecting) {
+          setInView(true);
+          io.disconnect();
+        }
       },
       { rootMargin: "300px" }
     );
     io.observe(sentinelRef.current);
     return () => io.disconnect();
-  }, []);
+  }, [src]);
+
+  const markLoaded = () => {
+    loadedLazyImageSources.add(src);
+    setLoaded(true);
+  };
 
   return (
     <>
@@ -47,7 +65,8 @@ export function LazyImage({ src, alt, className = "", style, ...rest }: LazyImag
             opacity: loaded ? 1 : 0,
             transition: "opacity 0.28s ease",
           }}
-          onLoad={() => setLoaded(true)}
+          onLoad={markLoaded}
+          onError={() => setLoaded(true)}
           {...rest}
         />
       )}

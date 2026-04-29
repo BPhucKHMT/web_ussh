@@ -24,6 +24,7 @@ export function ChapterCover({ id, number, title, image, description }: ChapterC
         <ProgressiveImg
           src={image}
           alt={title}
+          eager
           wrapperClass="w-full h-full"
           className="w-full h-full object-cover"
         />

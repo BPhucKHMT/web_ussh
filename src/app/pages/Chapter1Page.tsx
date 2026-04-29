@@ -4,6 +4,10 @@ import { Timeline } from "../components/Timeline";
 import { NextChapter } from "../components/NextChapter";
 import { ProgressiveImg } from "../components/ProgressiveImg";
 import { motion } from "motion/react";
+import biaChuong1 from "../../imports/bia_chuong1.JPG";
+import img2272 from "../../imports/IMG_2272.JPG";
+import eventCrowd from "../../imports/656004211_866480449779741_7990508900861967897_n.jpg";
+import eventColor from "../../imports/z7716763529757_5036ad59810120b5aba05f65287d4727.jpg";
 
 export function Chapter1Page() {
   return (
@@ -19,7 +23,7 @@ export function Chapter1Page() {
         number="Chương 1"
         title={'Không phải \u201cCosplay\u201d, đây là văn hoá'}
         description="Chiều tối 21/3, hơn một ngàn bạn trẻ trong những bộ Việt phục rực rỡ đã cùng xuống phố đồng diễn cho đêm hội Tóc Xanh Vạt Áo."
-        image="src/imports/bia_chuong1.JPG"
+        image={biaChuong1}
       />
 
       <section className="py-24 px-6 bg-[var(--ivory)]">
@@ -52,7 +56,7 @@ export function Chapter1Page() {
               style={{ boxShadow: "0 20px 50px rgba(75,46,43,0.2)" }}
             >
               <ProgressiveImg
-                src="src/imports/IMG_2272.JPG"
+                src={img2272}
                 alt="Khánh My trong trang phục Việt phục"
                 wrapperClass="w-full h-full"
                 className="w-full h-full object-contain"
@@ -100,7 +104,7 @@ export function Chapter1Page() {
           <div className="w-full rounded-xl overflow-hidden"
                style={{ boxShadow: "0 12px 40px rgba(75,46,43,0.15)" }}>
             <ProgressiveImg
-              src="src/imports/656004211_866480449779741_7990508900861967897_n.jpg"
+              src={eventCrowd}
               alt="Sự thành công của đêm hội"
               wrapperClass="w-full"
               className="w-full h-auto object-contain"
@@ -136,7 +140,7 @@ export function Chapter1Page() {
               style={{ boxShadow: "0 20px 50px rgba(75,46,43,0.2)" }}
             >
               <ProgressiveImg
-                src="src/imports/z7716763529757_5036ad59810120b5aba05f65287d4727.jpg"
+                src={eventColor}
                 alt="Hình ảnh sự kiện"
                 wrapperClass="w-full h-full"
                 className="w-full h-full object-contain"
